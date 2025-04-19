@@ -1,0 +1,106 @@
+#!name=App去广告
+#!desc=对自己常用的一些App去掉广告 @ChangXiaoqiang
+#!system=ios
+
+[URL Rewrite]
+# 中国电信去广告
+^https?:\/\/cloud\.189\.cn\/include\/splash\/ -reject
+^https?:\/\/zt-app\.go189\.cn\/zt-app\/welcome\/.*?Animation - reject
+
+# 中国移动开屏
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/(init\/startInit|emotionMarket) - reject
+
+# > 嘀嗒拼车
+^https?:\/\/img\.didapinche\.com\/pics\/\/g\/ - REJECT-DROP
+^https?:\/\/capis-4\.didapinche\.com\/ad\/ - REJECT-DROP
+^https?:\/\/capis-4\.didapinche\.com\/adbase\/ - REJECT-DROP
+
+# > 滴滴打车
+^https?:\/\/img-ys011\.didistatic\.com\/static\/ad_oss\/ - REJECT-DROP
+^https?:\/\/adtrack\.xiaojukeji\.com\/ - REJECT-DROP
+
+# > 360手机卫士
+^https?:\/\/huodong\.ios\.shouji\.360\.cn\/v4\/ - REJECT-DROP
+^http?:\/\/p9-be-pack-sign\.pglstatp-toutiao\.com\/tos-cn-p-0051\/ - REJECT-DROP
+^https?:\/\/pgdt\.ugdtimg\.com\/141\/20204\/snscosdownload\/SZ\/reserved\/ - REJECT-DROP
+^http?:\/\/p26-be-pack-sign\.pglstatp-toutiao\.com\/web\.business\.image\/ - REJECT-DROP
+
+# > IT之家
+^https?:\/\/api\.zuihuimai\.com\/static\/s11\/2022-nhj\/ - REJECT-DROP
+^https?:\/\/img\.alicdn\.com\/ - REJECT-DROP
+^https?:\/\/gw\.alicdn\.com\/ - REJECT-DROP
+^https?:\/\/www\.ithome\.com\/0\/ - REJECT-DROP
+^https?:\/\/img\.ithome\.com\/newsuploadfiles/*/*/*?x-bce-process=image\/format\/ - REJECT-DROP
+
+# > CamHipro
+^https?:\/\/p9-be-pack-sign\.pglstatp-toutiao\.com\/ - REJECT-DROP
+^https?:\/\/p3-be-pack-sign\.pglstatp-toutiao\.com\/ - REJECT-DROP
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/ - REJECT-DROP
+^https?:\/\/sf3-fe-tos\.pglstatp-toutiao\.com\/obj\/ad-pattern\/ - REJECT-DROP
+
+# > QQ空间/QQ
+^https?:\/\/h\.trace\.qq\.com\/ - REJECT-DROP
+^https?:\/\/heic\.alicdn\.com\/ - REJECT-DROP
+^https?:\/\/xc\.gdt\.qq\.com\/ - REJECT-DROP
+^https?:\/\/lp\.pinduoduo\.com\/ - REJECT-DROP
+^https?:\/\/lpcdn\.pinduoduo\.com\/ - REJECT-DROP
+^https?:\/\/pgdt\.gtimg\.cn\/ - REJECT-DROP
+
+# > 彩云天气
+^https?:\/\/cdn-w\.caiyunapp\.com\/ - REJECT-DROP
+^https?:\/\/ad\.caiyunapp\.com\/ - REJECT-DROP
+
+# > 妈妈网孕育
+^https?:\/\/sf3-fe-tos\.pglstatp-toutiao\.com\/obj\/ad-pattern\/ - REJECT-DROP
+^https?:\/\/cdn-act2\.cdnmama\.com\/ - REJECT-DROP
+^https?:\/\/pt-images*\.cdnmama\.com\/ - REJECT-DROP
+^https?:\/\/qimg\.cdnmama\.com\/ - REJECT-DROP
+
+# > 美团外卖
+^https?:\/\/img\.meituan\.net\/bizad\/*.jpg - REJECT-DROP
+^https?:\/\/wmapi\.meituan\.com\/api\/v7\/startpicture - REJECT-DROP
+
+# > 饿了么
+^https?:\/\/cube\.elemecdn\.com\/ - REJECT-DROP
+
+# > 高德地图
+^https?:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/ - REJECT-DROP
+^https?:\/\/optimus-ads\.amap\.com\/ - REJECT-DROP
+^https?:\/\/aid\.m\.taobao\.com\/ - REJECT-DROP
+^https?:\/\/optimus-ads\.amap\.com\/uploadimg\/d17bb44dde853569b03837b3cc091af6.gif - REJECT-DROP
+
+# > 百度地图
+^https?:\/\/hmma\.baidu\.com\/ - REJECT-DROP
+^https?:\/\/map-mobile-opnimg\.cdn\.bcebos\.com\/*.gif - REJECT-DROP
+^https?:\/\/dss0\.bdstatic\.com\/ - REJECT-DROP
+^https?:\/\/map-mobile-opnimg\.cdn\.bcebos\.com\/*.png - REJECT-DROP
+^https?:\/\/nsclick\.baidu\.com\/ - REJECT-DROP
+^https?:\/\/map-mobile-resource\.cdn\.bcebos\.com\/icon\/service\/trip-helper\/default\/chunJieBanner.png - REJECT-DROP
+^https?:\/\/cjh-amis\.cdn\.bcebos\.com\/2023-1\/1673417414557\/poi%20banner%20%403x%20%E6%8B%B7%E8%B4%9D.jpg - REJECT-DROP
+^https?:\/\/map-mobile-resource\.cdn\.bcebos\.com\/icon\/service\/periphery\/default\/*.gif - REJECT-DROP
+^https?:\/\/map-mobile-opnimg\.cdn\.bcebos\.com\/efba43686f5325057f2ee0d29d170bd2.png - REJECT-DROP
+
+# > 12306
+^https?:\/\/ad\.12306\.cn\/res\/adfiles\/\/delivery\/ - REJECT-DROP
+^https?:\/\/ad\.12306\.cn\/ad\/ser\/ - REJECT-DROP
+^https?:\/\/mobile\.12306\.cn\/otsmobile\/app\/mas\/loggw\/ - REJECT-DROP
+^https?:\/\/mobile\.12306\.cn\/otsmobile\/h5\/otsbussiness\/travelPageImg\/ - REJECT-DROP
+
+# > 去哪网
+^https:\/\/qde\.qunar\.com\/preload\/ - REJECT-DROP
+
+# > 飞猪旅行
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource\/ - REJECT-DROP
+
+# > 菜鸟裹裹
+^https?:\/\/ilce\.alicdn\.com\/minolta\/374884\/0\/ - REJECT-DROP
+[Rule]
+# > 微信朋友圈
+DOMAIN-SUFFIX, mp.weixin.qq.com, REJECT
+
+[Script]
+#12306去广告这个脚本是借鉴的，具体原作者不清楚，在电报群里复制粘贴的
+12306去广告 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js,script-update-interval=0
+
+[MITM]
+hostname = %APPEND% cloud.189.cn, zt-app.go189.cn, client.app.coc.10086.cn, mp.weixin.qq.com, adtrack.xiaojukeji.com, capis-4.didapinche.com, img.didapinche.com, img-ys011.didistatic.com, sf3-fe-tos.pglstatp-toutiao.com, api-access.pangolin-sdk-toutiao.com, p26-be-pack-sign.pglstatp-toutiao.com, pgdt.ugdtimg.com, huodong.ios.shouji.360.cn, nsclick.baidu.com, hmma.baidu.com, ilce.alicdn.com, carowner-default.cdn.bcebos.com, carowner.baidu.com, mapcarowner-gz.cdn.bcebos.com, www.ithome.com, gw.alicdn.com, img.alicdn.com, img.ithome.com, p3-be-pack-sign.pglstatp-toutiao.com, p9-be-pack-sign.pglstatp-toutiao.com, h.trace.qq.com, heic.alicdn.com, xc.gdt.qq.com, lp.pinduoduo.com, lpcdn.pinduoduo.com, pgdt.gtimg.cn, kepler.jd.com, adashxgc.ut.taobao.com, api.zuihuimai.com, cdn-w.caiyunapp.com, ad.caiyunapp.com, sf3-fe-tos.pglstatp-toutiao.com, cdn-act2.cdnmama.com, pt-images*.cdnmama.com, qimg.cdnmama.com, dig.lianjia.com, acs.m.taobao.com, qde.qunar.com, apps.api.ke.com, cube.elemecdn.com, cache.amap.com, g.cn.miaozhen.com, mobile.12306.cn, ad.12306.cn, map-mobile-opnimg.cdn.bcebos.com, dss0.bdstatic.com, cjh-amis.cdn.bcebos.com, map-mobile-resources.cdn.bcebos.com, aid.m.taobao.com, optimus-ads.amap.com, img.meituan.net, wmapi.meituan.com, m5.amap.com, sns.amap.com

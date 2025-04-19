@@ -1,0 +1,16 @@
+#!name=净化网易云
+#!desc=去广告2022.12.8
+
+
+[URL Rewrite]
+^https?:\/\/p\.du\.163\.com\/ad\/ - reject
+^https?:\/\/support\.you\.163\.com\/xhr\/boot\/getBootMedia\.json - reject
+^https?:\/\/interface(\d)?.music.163.com\/eapi\/ad\/ - reject
+^https?:\/\/appconf\.mail\.163\.com\/mmad\/ - reject
+^https:\/\/ossgw\.alicdn\.com\/creatives-assets\/prod\/feupload\/user\/.+?\.jpg$ - reject
+iadmusicmatvideo.music.126.net - reject
+iadmusicmat.music.126.net - reject
+
+
+[MITM]
+hostname = %APPEND% appconf.mail.163.com,interface*.music.163.com,support.you.163.com,p.du.163.com,ossgw.alicdn.com

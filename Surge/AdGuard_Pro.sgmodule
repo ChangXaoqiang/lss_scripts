@@ -1,0 +1,13 @@
+#!name=AdGuard_Pro
+#!desc=AdGuard 解锁永久高级版
+#软件版本:4.4.5
+#脚本作者:Passer_by_yun
+#更新时间:2022-12-26
+#电报频道:https://t.me/yqc_123
+#使用声明：️仅供学习交流，🈲️商业用途
+
+[Script]
+AdGuard_Pro = type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/AdGuardProCrack.js
+
+[MITM]
+hostname= %APPEND% *.adguard.org
