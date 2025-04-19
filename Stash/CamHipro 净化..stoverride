@@ -1,0 +1,31 @@
+name: CamHipro 净化
+desc: CamHipro 去开屏广告
+icon: https://play-lh.googleusercontent.com/rvyt5BvmYV-uUPdlYNsy58F-4Ubmaw6xJ9Ys9QSiGj06H9GkciiHe3K3_8iMyhbRDQ=w480-h960-rw
+category: "自用去广告"
+
+http:
+  mitm:
+    - "mon.zijieapi.com"
+    - "mobads-logs.baidu.com"
+    - "open.e.kuaishou.cn"
+    - "adukwai.com"
+    - "mktm.jd.com"
+    - "lapin365.com"
+    - "adashbc.ut.taobao.com"
+    - "360buyimg.com"
+    - "mobads-pre-config.cdn.bcebos.com"
+    - "pgdt.ugdtimg.com"
+    - "adsmind.ugdtimg.com"
+
+  url-rewrite:
+    - ^https?:\/\/mon\.zijieapi\.com\/ - reject
+    - ^https?:\/\/mobads-logs\.baidu\.com\/ - reject
+    - ^https?:\/\/open\.e\.kuaishou\.cn\/ - reject
+    - ^https?:\/\/.+\adukwai\.com\/ - reject
+    - ^https?:\/\/mktm\.jd\.com\/ - reject
+    - ^https?:\/\/.+\.lapin365\.com\/ - reject
+    - ^https?:\/\/adashbc\.ut\.taobao\.com\/ - reject
+    - ^https?:\/\/.+\.360buyimg\.com\/ - reject
+    - ^https?:\/\/mobads-pre-config\.cdn\.bcebos\.com\/ - reject
+    - ^https?:\/\/pgdt\.ugdtimg\.com\/ - reject
+    - ^https?:\/\/adsmind\.ugdtimg\.com\/ - reject

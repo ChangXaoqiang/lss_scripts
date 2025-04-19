@@ -1,0 +1,13 @@
+name: 懂车帝_净化
+desc: 最后更新时间：2024-07-28 02:16
+icon: https://pp.myapp.com/ma_icon/0/icon_52478052_1721722827/256
+category: "🚫Ads"
+
+http:
+  mitm:
+    - "m.dcdapp.com"
+    - "mon11-misc-hl.zijieapi.com"
+
+  url-rewrite:
+    - ^https?:\/\/m\.dcdapp\.com\/landingpage\/ - reject
+    - ^https?:\/\/mon11-misc-hl\.zijieapi\.com\/monitor_browser\/collect\/batch\/ - reject
