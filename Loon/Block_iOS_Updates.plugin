@@ -27,8 +27,8 @@ PROCESS-NAME,mobileassetd,REJECT
 PROCESS-NAME,softwareupdated,REJECT
 
 [Script]
-http-request ^https?:\/\/api\.apple\.com\/mobileasset\/iosupdate\/ script-path=https://raw.githubusercontent.com/ChangXiaoqiang/script/main/Loon/disable_ios_updates.js
-http-request ^https?:\/\/iprofiles\.apple\.com\/ script-path=https://raw.githubusercontent.com/ChangXiaoqiang/script/main/Loon/disable_ios_updates.js
+[Script]
+http-request ^https?:\/\/api\.apple\.com script-path=https://cdn.jsdelivr.net/gh/ChangXiaoqiang/script@main/Loon/disable_ios_updates.js?ts=$(TIMESTAMP)
 
 [MitM]
 hostname = api.apple.com, iprofiles.apple.com, mesu.apple.com
