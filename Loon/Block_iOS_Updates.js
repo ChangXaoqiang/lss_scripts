@@ -17,6 +17,12 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 	<array/>
 	<key>Message</key>
 	<string>您的软件已是最新版本（${latestVersion}）。</string>
+	<key>ProductVersion</key>
+	<string>${latestVersion}</string>
+	<key>IsLatest</key>
+	<true/>
+	<key>IsUpdate</key>
+	<false/>
 </dict>
 </plist>`;
 
