@@ -31,4 +31,4 @@ hostname = mesu.apple.com, appldnld.apple.com, iprofiles.apple.com, gdmf.apple.c
 
 [Script]
 # 自动禁用系统更新提示（iOS 12+）
-http-request ^https?:\/\/api\.apple\.com\/mobileasset\/iosupdate\/ script-path=https://github.com/ChangXiaoqiang/script/blob/main/Loon/disable_ota.js
+http-request ^https?:\/\/api\.apple\.com\/mobileasset\/iosupdate\/ script-path=https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/Loon/disable_ota.js
