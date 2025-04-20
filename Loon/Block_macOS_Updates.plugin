@@ -7,16 +7,16 @@
 
 [Rule]
 # 屏蔽更新服务器域名
-DOMAIN,swscan.apple.com,REJECT
-DOMAIN,mesu.apple.com,REJECT
-DOMAIN,gdmf.apple.com,REJECT
-DOMAIN,updates.cdn-apple.com,REJECT
-DOMAIN,xp.apple.com,REJECT
-DOMAIN,skl.apple.com,REJECT
-DOMAIN,ns.itunes.apple.com,REJECT
+DOMAIN,swscan.apple.com,reject
+DOMAIN,mesu.apple.com,reject
+DOMAIN,gdmf.apple.com,reject
+DOMAIN,updates.cdn-apple.com,reject
+DOMAIN,xp.apple.com,reject
+DOMAIN,skl.apple.com,reject
+DOMAIN,ns.itunes.apple.com,reject
 
 # 屏蔽更新进程网络访问
-PROCESS-NAME,softwareupdated,REJECT
+PROCESS-NAME,softwareupdated,reject
 
 [MitM]
 hostname = swscan.apple.com, mesu.apple.com, updates.cdn-apple.com

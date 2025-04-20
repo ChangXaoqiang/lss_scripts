@@ -7,24 +7,24 @@
 
 [Rule]
 # 屏蔽iOS更新域名（核心）
-DOMAIN,mesu.apple.com,REJECT
-DOMAIN,appldnld.apple.com,REJECT
-DOMAIN,updates-http.cdn-apple.com,REJECT
-DOMAIN,xp.apple.com,REJECT
-DOMAIN,gdmf.apple.com,REJECT  # Beta版更新
-DOMAIN,ns.itunes.apple.com,REJECT
+DOMAIN,mesu.apple.com,reject
+DOMAIN,appldnld.apple.com,reject
+DOMAIN,updates-http.cdn-apple.com,reject
+DOMAIN,xp.apple.com,reject
+DOMAIN,gdmf.apple.com,reject  # Beta版更新
+DOMAIN,ns.itunes.apple.com,reject
 
 # 屏蔽描述文件检测（iOS 14+必需）
-DOMAIN,iprofiles.apple.com,REJECT
-DOMAIN,mdmenrollment.apple.com,REJECT
+DOMAIN,iprofiles.apple.com,reject
+DOMAIN,mdmenrollment.apple.com,reject
 
 # 屏蔽OTA缓存服务器
-DOMAIN,ocsp.apple.com,REJECT
-DOMAIN,world-gen.g.aaplimg.com,REJECT
+DOMAIN,ocsp.apple.com,reject
+DOMAIN,world-gen.g.aaplimg.com,reject
 
 # 阻止系统更新进程
-PROCESS-NAME,mobileassetd,REJECT
-PROCESS-NAME,softwareupdated,REJECT
+PROCESS-NAME,mobileassetd,reject
+PROCESS-NAME,softwareupdated,reject
 
 [MitM]
 hostname = api.apple.com, iprofiles.apple.com, mesu.apple.com
