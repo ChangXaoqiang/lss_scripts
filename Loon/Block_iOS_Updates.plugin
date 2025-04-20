@@ -26,9 +26,5 @@ DOMAIN,world-gen.g.aaplimg.com,REJECT
 PROCESS-NAME,mobileassetd,REJECT
 PROCESS-NAME,softwareupdated,REJECT
 
-[Script]
-[Script]
-http-request ^https?:\/\/api\.apple\.com script-path=https://cdn.jsdelivr.net/gh/ChangXiaoqiang/script@main/Loon/disable_ios_updates.js?ts=$(TIMESTAMP)
-
 [MitM]
 hostname = api.apple.com, iprofiles.apple.com, mesu.apple.com
