@@ -24,7 +24,7 @@ DOMAIN,updates.cdn-apple.com,reject
 ^https?:\/\/ns\.itunes\.apple\.com\/ reject
 ^https?:\/\/updates-http\.cdn-apple\.com\/ reject
 ^https?:\/\/updates\.cdn-apple\.com\/ reject
-^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ url script-response-body Block_iOS_Updates.js
+^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/Loon/Block_iOS_Updates.js
 
 [Script]
 # 伪装为“已是最新版本”的脚本
