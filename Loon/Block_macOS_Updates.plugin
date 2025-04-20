@@ -1,41 +1,22 @@
-{
-  "name": "Block macOS Updates",
-  "desc": "彻底屏蔽苹果系统自动更新",
-  "rules": [
-    {
-      "type": "DOMAIN",
-      "domain": "swscan.apple.com",
-      "policy": "REJECT"
-    },
-    {
-      "type": "DOMAIN",
-      "domain": "mesu.apple.com",
-      "policy": "REJECT"
-    },
-    {
-      "type": "DOMAIN",
-      "domain": "gdmf.apple.com",
-      "policy": "REJECT"
-    },
-    {
-      "type": "DOMAIN",
-      "domain": "updates.cdn-apple.com",
-      "policy": "REJECT"
-    },
-    {
-      "type": "DOMAIN",
-      "domain": "xp.apple.com",
-      "policy": "REJECT"
-    },
-    {
-      "type": "DOMAIN",
-      "domain": "skl.apple.com",
-      "policy": "REJECT"
-    },
-    {
-      "type": "DOMAIN",
-      "domain": "ns.itunes.apple.com",
-      "policy": "REJECT"
-    }
-  ]
-}
+#!name = 屏蔽 macOS 自动更新
+#!desc = 彻底阻止系统检测和下载更新（支持 Sequoia/Sonoma）
+#!author = ChangXiaoqiang
+#!tag = 系统优化
+#!icon = https://images.icon-icons.com/3053/PNG/512/settings_macos_bigsur_icon_189754.png
+#!date = 2024-4-20
+
+[Rule]
+# 屏蔽更新服务器域名
+DOMAIN,swscan.apple.com,REJECT
+DOMAIN,mesu.apple.com,REJECT
+DOMAIN,gdmf.apple.com,REJECT
+DOMAIN,updates.cdn-apple.com,REJECT
+DOMAIN,xp.apple.com,REJECT
+DOMAIN,skl.apple.com,REJECT
+DOMAIN,ns.itunes.apple.com,REJECT
+
+# 屏蔽更新进程网络访问
+PROCESS-NAME,softwareupdated,REJECT
+
+[MitM]
+hostname = swscan.apple.com, mesu.apple.com, updates.cdn-apple.com
