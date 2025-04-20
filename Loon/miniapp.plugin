@@ -1,8 +1,8 @@
 #!name = 微信小程序净化
 #!desc = 净化常用的微信小程序广告
-#!author = ChangXiaoqiang
+#!author = ChangXiaoqiang[https://github.com/ChangXaoqiang/script]
 #!tag = 去广告
-#!icon = https://github.com/zc-nju-med/hellcell/blob/master/QuantumultX/AV/cangjingkong.PNG?raw=true
+#!icon = http://www.kuaipng.com/Uploads/pic/w/2020/06-11/85112/water_85112_260_260.png
 #!date = 2025-04-20
 
 [Rewrite]
