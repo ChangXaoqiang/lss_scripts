@@ -2,7 +2,7 @@ const $ = API();
 let body = $response.body;
 
 // 伪造 SoftwareUpdate.xml 响应，始终显示“已是最新版本”
-const latestVersion = "iOS 17.5.1"; // 可根据实际系统版本调整
+const latestVersion = "iOS 18.5.5"; // 可根据实际系统版本调整
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <plist version="1.0">
 <dict>
