@@ -1,0 +1,19 @@
+name: 小熊油耗
+desc: 小熊油耗会员订阅解锁
+icon: https://raw.githubusercontent.com/deezertidal/private/main/icons/Plugallery.png
+author: ChangXiaoqiang
+date: 2025-04-20
+
+http:
+  mitm:
+    - "www.xiaoxiongyouhao.com"
+  script:
+    - match: ^http[s]?:\/\/www.xiaoxiongyouhao.com\/api\/vip\/index.php
+      name: xiaoxiongyouhao1
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  xiaoxiongyouhao1:
+    url: https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/xiaoxiongyouhao.js
+    interval: 86400
