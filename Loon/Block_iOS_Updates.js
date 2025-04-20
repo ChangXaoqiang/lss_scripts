@@ -1,17 +1,15 @@
-// 伪造更新检测响应内容
-const response = {
-  status: 200,
-  headers: { "Content-Type": "application/xml" },
-  body: `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <root>
-      <message>您的软件已是最新版本。</message>
-      <update>
-        <version>16.0</version>
-        <build>20A362</build>
-      </update>
-    </root>
-  `
+const $ = API();
+let body = $response.body;
+
+// 构造一个"已是最新版本"的响应
+const updatedBody = {
+    "IndividualProductDetails": {},
+    "Assets": [],
+    "AllProducts": [],
+    "NotificationMessages": [],
+    "ProductVersion": "16.0",
+    "DocumentationURL": "",
+    "ExtendedMetaInfo": ""
 };
 
-$done(response);
+$done({ body: JSON.stringify(updatedBody) });

@@ -17,19 +17,11 @@ DOMAIN,updates.cdn-apple.com,REJECT-DROP
 
 [Rewrite]
 # 重写iOS更新检测请求
-^https?:\/\/mesu\.apple\.com\/ REJECT-DROP
-^https?:\/\/appldnld\.apple\.com\/ REJECT-DROP
-^https?:\/\/xp\.apple\.com\/ REJECT-DROP
-^https?:\/\/gdmf\.apple\.com\/ REJECT-DROP
-^https?:\/\/ns\.itunes\.apple\.com\/ REJECT-DROP
-^https?:\/\/updates-http\.cdn-apple\.com\/ REJECT-DROP
-^https?:\/\/updates\.cdn-apple\.com\/ REJECT-DROP
-^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/Loon/Block_iOS_Updates.js
+^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ data="https://raw.githubusercontent.com/ChangXaoqiang/script/main/Loon/Block_iOS_Updates.js"
 
 [Script]
-# 伪装为“已是最新版本”的脚本
-Block_iOS_Updates.js = type=http-response,pattern=^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/Loon/Block_iOS_Updates.js
+# 伪装为"已是最新版本"的脚本
+http-response ^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ script-path=https://raw.githubusercontent.com/ChangXaoqiang/script/main/Loon/Block_iOS_Updates.js,requires-body=true,tag=Block_iOS_Updates
 
 [MitM]
-# 中间人攻击需要拦截的域名
 hostname = mesu.apple.com, appldnld.apple.com, xp.apple.com, gdmf.apple.com, ns.itunes.apple.com, updates-http.cdn-apple.com, updates.cdn-apple.com
