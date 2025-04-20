@@ -1,63 +1,63 @@
 #!name = 微信小程序净化
 #!desc = 净化常用的微信小程序广告
-#!author = ChangXaoqiang
+#!author = ChangXiaoqiang  # 修正拼写
 #!tag = 去广告
 #!icon = https://github.com/zc-nju-med/hellcell/blob/master/QuantumultX/AV/cangjingkong.PNG?raw=true
 #!date = 2025-03-31
 #!version = 0.0.1
 
 [Rewrite]
-# 小程序 - 腾讯健康
+# ===== 腾讯健康相关广告 =====
 ^https:\/\/static\.wecity\.qq\.com\/thop-client\/static\/ reject
 ^https:\/\/resource\.wesure100\.com\/ reject
 ^https:\/\/static\.wecity\.qq\.com\/lego_next_resources\/ reject
-^https:\/\/*\.wecity\.qq\.com\/trpcapi\/AdvCfg\/ reject-200
-^https:\/\/static\.wecity\.qq\.com\/monument\/config\/static\/img\/*.png reject-200
+^https:\/\/.*\.wecity\.qq\.com\/trpcapi\/AdvCfg\/ reject-200  # 返回200，防止小程序报错
+^https:\/\/static\.wecity\.qq\.com\/monument\/config\/static\/img\/.*\.png reject-200
+^https:\/\/h5\.baike\.qq\.com\/api\/access\/json\/txjk\/cmd\/GetAdsRcm reject
+
+# ===== 保险、健康推送广告 =====
 ^https:\/\/api\.weino\.cn\/2\/push\/ reject
+^https:\/\/ads\.ysepay\.com\/ads\/ reject
+
+# ===== 支付、扫码广告 =====
 ^http:\/\/scanpay\.tdzntech\.com\/scanpay\/cparkAd\/ reject
+
+# ===== 百度相关广告 =====
 ^https:\/\/webmap0\.bdimg\.com\/zt\/ reject
 ^https:\/\/zt\.baidu\.com\/activity\/ reject
 ^https:\/\/navi-voice\.cdn\.bcebos\.com\/files\/ reject
-^http:\/\/cdn-evone\.oss-cn-beijing\.aliyuncs\.com\/cms_img\/1733915269952.jpeg reject
-^http?:\/ad\.12306\.cn\/ reject
-^http?:\/\/adashx\.ut\.cainiao\.com\/ reject
 
-# 威锋 - 开屏广告
+# ===== 其它图片广告 =====
+^http:\/\/cdn-evone\.oss-cn-beijing\.aliyuncs\.com\/cms_img\/1733915269952\.jpeg reject
+^https?:\/\/ad\.12306\.cn\/ reject
+^https?:\/\/adashx\.ut\.cainiao\.com\/ reject
+
+# ===== 威锋开屏广告 =====
 ^https:\/\/api\.wfdata\.club\/v2\/yesfeng\/yesList reject
 
-# 小程序 - 银盛支付
-^https:\/\/ads\.ysepay\.com\/ads\/ reject
-
-# 小程序 - 元气森林
+# ===== 元气森林广告 =====
 ^https:\/\/gos-static\.yqslmall\.com\/gos-admin\/online\/IMAGE\/ reject
 
-# 小程序 - 腾讯健康
-^https:\/\/h5\.baike\.qq\.com\/api\/access\/json\/txjk\/cmd\/GetAdsRcm reject
-
-# 小程序 - EMS
+# ===== EMS广告 =====
 ^https:\/\/mini\.ems\.com\.cn\/youzheng\/ad\/ reject
 ^https:\/\/card\.wecity\.qq\.com\/trpcapi\/AdvCfg\/AdvRulePlay reject
 ^https:\/\/ump\.ems\.com\.cn\/mailAd\/ reject
 ^https:\/\/wximg\.wxs\.qq\.com\/ reject
-^http?:\/\/*minorshort\.weixin\.qq\.com\/mmtls\/ reject
+^https?:\/\/.*minorshort\.weixin\.qq\.com\/mmtls\/ reject
 
-# 小程序 - 饿了么取餐
+# ===== 饿了么取餐广告 =====
 ^https?:\/\/kr\.ele\.me\/webapp\/advert\/ reject
 
-# 小程序 - 360
+# ===== 360及电商广告 =====
 ^https?:\/\/iosapp\.click\/stat\/ reject
 ^https:\/\/aiad-aisuda\.cdn\.bcebos\.com\/ reject
 ^https:\/\/ossgw\.alicdn\.com\/ reject
-^https:\/\/*\.360buyimg\.com\/ reject
+^https:\/\/.*\.360buyimg\.com\/ reject
 ^https:\/\/4gimg\.map\.qq\.com\/map\/06ae04f8e4082afb813a1dad20083a30\.png reject
 ^https:\/\/pgdt\.gtimg\.cn\/ reject
-^https:\/\/m\.360buyimg\.com\/ reject-img
+^https:\/\/m\.360buyimg\.com\/ reject-img  # 图片广告
 ^https:\/\/img\.ithome\.com\/zuihuimai\/ reject-img
 ^https:\/\/adashbc\.ut\.taobao\.com\/ reject-img
 
-# 小程序 - 畅停e行
-^https:\/\/wechat\.xcx1\.ctpark\.cn\/\/cloud\/weChatApplets\/chh\/queryWeChatAdvertisingBySite reject-dict
-^https:\/\/ct-bucket\.oss-cn-shenzhen\.aliyuncs\.com\/platform\/pic\/advertising\/ reject
-
 [MitM]
-hostname = static.wecity.qq.com, resource.wesure100.com, lego_next_resources.wecity.qq.com, api.wecity.qq.com, h5.baike.qq.com, mini.ems.com.cn, card.wecity.qq.com, wximg.wxs.qq.com, kr.ele.me, iosapp.click, aiad-aisuda.cdn.bcebos.com, ossgw.alicdn.com, 360buyimg.com, 4gimg.map.qq.com, pgdt.gtimg.cn, m.360buyimg.com, img.ithome.com, adashbc.ut.taobao.com, wechat.xcx1.ctpark.cn, ct-bucket.oss-cn-shenzhen.aliyuncs.com
+hostname = 360buyimg.com, 4gimg.map.qq.com, adashbc.ut.taobao.com, aiad-aisuda.cdn.bcebos.com, api.wecity.qq.com, card.wecity.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, h5.baike.qq.com, img.ithome.com, iosapp.click, kr.ele.me, lego_next_resources.wecity.qq.com, m.360buyimg.com, mini.ems.com.cn, ossgw.alicdn.com, pgdt.gtimg.cn, resource.wesure100.com, static.wecity.qq.com, wechat.xcx1.ctpark.cn, wximg.wxs.qq.com

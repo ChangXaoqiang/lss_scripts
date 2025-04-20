@@ -7,13 +7,13 @@
 
 [Rule]
 # 屏蔽iOS更新服务器
-DOMAIN,mesu.apple.com,REJECT-DROP
-DOMAIN,appldnld.apple.com,REJECT-DROP
-DOMAIN,xp.apple.com,REJECT-DROP
-DOMAIN,gdmf.apple.com,REJECT-DROP
-DOMAIN,ns.itunes.apple.com,REJECT-DROP
-DOMAIN,updates-http.cdn-apple.com,REJECT-DROP
-DOMAIN,updates.cdn-apple.com,REJECT-DROP
+DOMAIN,mesu.apple.com,REJECT-200
+DOMAIN,appldnld.apple.com,REJECT-200
+DOMAIN,xp.apple.com,REJECT-200
+DOMAIN,gdmf.apple.com,REJECT-200
+DOMAIN,ns.itunes.apple.com,REJECT-200
+DOMAIN,updates-http.cdn-apple.com,REJECT-200
+DOMAIN,updates.cdn-apple.com,REJECT-200
 
 [MitM]
 hostname = mesu.apple.com,appldnld.apple.com,xp.apple.com,gdmf.apple.com,ns.itunes.apple.com,updates-http.cdn-apple.com,updates.cdn-apple.com
