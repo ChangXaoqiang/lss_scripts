@@ -24,6 +24,11 @@ DOMAIN,updates.cdn-apple.com,reject
 ^https?:\/\/ns\.itunes\.apple\.com\/ reject
 ^https?:\/\/updates-http\.cdn-apple\.com\/ reject
 ^https?:\/\/updates\.cdn-apple\.com\/ reject
+^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ url script-response-body Block_iOS_Updates.js
+
+[Script]
+# 伪装为“已是最新版本”的脚本
+Block_iOS_Updates.js = type=http-response,pattern=^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$,requires-body=1,max-size=0,script-path=Block_iOS_Updates.js
 
 [MitM]
 # 中间人攻击需要拦截的域名
