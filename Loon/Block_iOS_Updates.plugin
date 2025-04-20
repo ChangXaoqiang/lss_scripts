@@ -15,13 +15,9 @@ DOMAIN,ns.itunes.apple.com,REJECT-DROP
 DOMAIN,updates-http.cdn-apple.com,REJECT-DROP
 DOMAIN,updates.cdn-apple.com,REJECT-DROP
 
-[Rewrite]
-# 重写iOS更新检测请求
-^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ data="https://raw.githubusercontent.com/ChangXaoqiang/script/main/Loon/Block_iOS_Updates.js"
-
 [Script]
 # 伪装为"已是最新版本"的脚本
-http-response ^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ script-path=https://raw.githubusercontent.com/ChangXaoqiang/script/main/Loon/Block_iOS_Updates.js,requires-body=true,tag=Block_iOS_Updates
+http-response ^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ script-path=/Users/changxiaoqiang/Documents/GitHub/script/Loon/Block_iOS_Updates.js,requires-body=true,tag=Block_iOS_Updates
 
 [MitM]
-hostname = mesu.apple.com, appldnld.apple.com, xp.apple.com, gdmf.apple.com, ns.itunes.apple.com, updates-http.cdn-apple.com, updates.cdn-apple.com
+hostname = mesu.apple.com
