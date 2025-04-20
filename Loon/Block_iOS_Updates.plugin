@@ -1,0 +1,30 @@
+#!name = 屏蔽iOS更新
+#!desc = 阻止iOS系统自动检测和下载更新
+#!author = ChangXaoqiang
+#!tag = 系统工具
+#!icon = https://images.icon-icons.com/3053/PNG/512/settings_macos_bigsur_icon_189754.png
+#!date = 2025-4-20
+
+[Rule]
+# 屏蔽iOS更新服务器
+DOMAIN,mesu.apple.com,reject
+DOMAIN,appldnld.apple.com,reject
+DOMAIN,xp.apple.com,reject
+DOMAIN,gdmf.apple.com,reject
+DOMAIN,ns.itunes.apple.com,reject
+DOMAIN,updates-http.cdn-apple.com,reject
+DOMAIN,updates.cdn-apple.com,reject
+
+[Rewrite]
+# 重写iOS更新检测请求
+^https?:\/\/mesu\.apple\.com\/ reject
+^https?:\/\/appldnld\.apple\.com\/ reject
+^https?:\/\/xp\.apple\.com\/ reject
+^https?:\/\/gdmf\.apple\.com\/ reject
+^https?:\/\/ns\.itunes\.apple\.com\/ reject
+^https?:\/\/updates-http\.cdn-apple\.com\/ reject
+^https?:\/\/updates\.cdn-apple\.com\/ reject
+
+[MitM]
+# 中间人攻击需要拦截的域名
+hostname = mesu.apple.com, appldnld.apple.com, xp.apple.com, gdmf.apple.com, ns.itunes.apple.com, updates-http.cdn-apple.com, updates.cdn-apple.com
