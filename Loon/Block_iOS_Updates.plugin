@@ -7,23 +7,23 @@
 
 [Rule]
 # 屏蔽iOS更新服务器
-DOMAIN,mesu.apple.com,reject
-DOMAIN,appldnld.apple.com,reject
-DOMAIN,xp.apple.com,reject
-DOMAIN,gdmf.apple.com,reject
-DOMAIN,ns.itunes.apple.com,reject
-DOMAIN,updates-http.cdn-apple.com,reject
-DOMAIN,updates.cdn-apple.com,reject
+DOMAIN,mesu.apple.com,REJECT-DROP
+DOMAIN,appldnld.apple.com,REJECT-DROP
+DOMAIN,xp.apple.com,REJECT-DROP
+DOMAIN,gdmf.apple.com,REJECT-DROP
+DOMAIN,ns.itunes.apple.com,REJECT-DROP
+DOMAIN,updates-http.cdn-apple.com,REJECT-DROP
+DOMAIN,updates.cdn-apple.com,REJECT-DROP
 
 [Rewrite]
 # 重写iOS更新检测请求
-^https?:\/\/mesu\.apple\.com\/ reject
-^https?:\/\/appldnld\.apple\.com\/ reject
-^https?:\/\/xp\.apple\.com\/ reject
-^https?:\/\/gdmf\.apple\.com\/ reject
-^https?:\/\/ns\.itunes\.apple\.com\/ reject
-^https?:\/\/updates-http\.cdn-apple\.com\/ reject
-^https?:\/\/updates\.cdn-apple\.com\/ reject
+^https?:\/\/mesu\.apple\.com\/ REJECT-DROP
+^https?:\/\/appldnld\.apple\.com\/ REJECT-DROP
+^https?:\/\/xp\.apple\.com\/ REJECT-DROP
+^https?:\/\/gdmf\.apple\.com\/ REJECT-DROP
+^https?:\/\/ns\.itunes\.apple\.com\/ REJECT-DROP
+^https?:\/\/updates-http\.cdn-apple\.com\/ REJECT-DROP
+^https?:\/\/updates\.cdn-apple\.com\/ REJECT-DROP
 ^https?:\/\/mesu\.apple\.com\/.*\/SoftwareUpdate\.xml$ url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/Loon/Block_iOS_Updates.js
 
 [Script]
