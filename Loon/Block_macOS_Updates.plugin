@@ -1,0 +1,41 @@
+{
+  "name": "Block macOS Updates",
+  "desc": "彻底屏蔽苹果系统自动更新",
+  "rules": [
+    {
+      "type": "DOMAIN",
+      "domain": "swscan.apple.com",
+      "policy": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "domain": "mesu.apple.com",
+      "policy": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "domain": "gdmf.apple.com",
+      "policy": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "domain": "updates.cdn-apple.com",
+      "policy": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "domain": "xp.apple.com",
+      "policy": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "domain": "skl.apple.com",
+      "policy": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "domain": "ns.itunes.apple.com",
+      "policy": "REJECT"
+    }
+  ]
+}
