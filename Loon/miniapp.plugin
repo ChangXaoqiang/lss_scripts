@@ -1,10 +1,9 @@
 #!name = 微信小程序净化
 #!desc = 净化常用的微信小程序广告
-#!author = ChangXiaoqiang  # 修正拼写
+#!author = ChangXiaoqiang
 #!tag = 去广告
 #!icon = https://github.com/zc-nju-med/hellcell/blob/master/QuantumultX/AV/cangjingkong.PNG?raw=true
-#!date = 2025-03-31
-#!version = 0.0.1
+#!date = 2025-04-20
 
 [Rewrite]
 # ===== 腾讯健康相关广告 =====
