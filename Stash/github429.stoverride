@@ -14,4 +14,3 @@ http:
   header-rewrite:
     - >-
       (raw|gist).githubusercontent.com request-replace Accept-Language en-us
-
