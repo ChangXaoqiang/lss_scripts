@@ -72,7 +72,7 @@ iosapps.itunes.apple.com = iosapps.itunes.apple.com.download.ks-cdn.com
 # > e充电
 ^https?:\/\/yxyylog\.echargenet\.com\/a\.gif - reject
 ^https:\/\/cdn-evone-oss\.echargenet\.com\/resource\/mini-program\/min_banner.*\.jpg - reject
-^https:\/\/cdn-evone-oss\.echargenet\.com\/resource\/mini-program\/banner.*\.jpg - reject
+^https:\/\/cdn-evone-oss\.echargenet\.com\/resource\/mini-program\/ - reject
 
 # > 京东小程序
 ^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo - reject
