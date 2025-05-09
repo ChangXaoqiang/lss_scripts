@@ -1,11 +1,15 @@
 #!name=微信小程序广告净化
-#!desc=净化微信小程序广告，支持车来了、EMS、元气森林、腾讯微保、顺丰速运、途虎养车、腾讯健康、美团、饿了么、畅停e行等
+#!desc=净化微信小程序广告，支持车来了、EMS、元气森林、腾讯微保、顺丰速运、途虎养车、腾讯健康、美团、饿了么、畅停e行、e充电、京东、滴滴出行、携程旅行、哈啰出行、高德地图、必胜客、肯德基、麦当劳、星巴克等
 #!priority=3
 #!system=ios
-#!icon=http://www.kuaipng.com/Uploads/pic/w/2020/06-11/85112/water_85112_260_260.png
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/WeChat.png
 #!category=广告净化
 #!author=ChangXiaoqiang
 #!date=2025-05-10
+
+# 说明：本模块用于拦截微信小程序中的各类广告，提升使用体验
+# 包括开屏广告、弹窗广告、横幅广告、信息流广告等
+# 最近更新：新增多家餐饮、出行类小程序的广告拦截规则
 
 [Host]
 iosapps.itunes.apple.com = iosapps.itunes.apple.com.download.ks-cdn.com
@@ -65,5 +69,54 @@ iosapps.itunes.apple.com = iosapps.itunes.apple.com.download.ks-cdn.com
 ^https:\/\/wechat\.xcx1\.ctpark\.cn\/\/cloud\/weChatApplets\/chh\/queryWeChatAdvertisingBySite - reject
 ^https:\/\/ct-bucket\.oss-cn-shenzhen\.aliyuncs\.com\/platform\/pic\/advertising\/ - reject
 
+# > e充电
+^https?:\/\/yxyylog\.echargenet\.com\/a\.gif - reject-img
+^https:\/\/cdn-evone-oss\.echargenet\.com\/resource\/mini-program\/min_banner.*\.jpg - reject-img
+^https:\/\/cdn-evone-oss\.echargenet\.com\/resource\/mini-program\/banner.*\.jpg - reject-img
+
+# > 京东小程序
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo - reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start - reject-img
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=queryMaterialAdverts - reject
+
+# > 滴滴出行
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/core - reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/core - reject-dict
+
+# > 携程旅行
+^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
+^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/json\/getAdsList - reject-dict
+^https:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page\=landingshare - reject
+
+# > 哈啰出行
+^https:\/\/api\.hellobike\.com\/api\?adx - reject
+^https:\/\/api\.hellobike\.com\/api\?ads - reject
+^https:\/\/api\.hellobike\.com\/api\?activity - reject
+
+# > 高德地图
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas - reject-dict
+
+# > 微信小商店
+^https:\/\/wxsnsdythumb\.wxs\.qq\.com\/[0-9]{3}\/[0-9]{5}\/snscosdownload\/SZ\/reserved\/ - reject-dict
+
+# > 必胜客
+^https:\/\/res\.pizzahut\.com\.cn\/CRM\/phad\/apphome\/apphome - reject-dict
+
+# > 肯德基
+^https:\/\/orders\.kfc\.com\.cn\/preorder-portal\/api\/v2\/coupon - reject-dict
+^https:\/\/dynamicad\.kfc\.com\.cn\/api - reject-dict
+^https:\/\/res\.kfc\.com\.cn\/CRM\/kfcad\/custom_v2\/wxapp - reject-dict
+^https:\/\/orders\.kfc\.com\.cn\/preorder-portal\/api\/v2\/activity - reject-dict
+
+# > 麦当劳
+^https:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject-dict
+
+# > 星巴克
+^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/popup - reject-dict
+^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/banner - reject-dict
+^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/global - reject-dict
+
 [MITM]
-hostname = %APPEND% bi-mall.meituan.com, h5.baike.qq.com, kr.ele.me, wechat.xcx1.ctpark.cn, gos-static.yqslmall.com, static.wecity.qq.com, v.tuhu.org, ucmp-static.sf-express.com, web.chelaile.net.cn, api.chelaile.net.cn, atrace.chelaile.net.cn, wxsnsdythumb.wxs.qq.com, resource.wesure100.com, inf-prdapi.wesure.cn, vectorsdk.map.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, qnimg.zowoyoo.com, ump.ems.com.cn, wxa.wxs.qq.com, sdk.e.qq.com, yun-hl.3g.qq.com, ipv4.gdt.qq.com, pgdt.gtimg.cn, mp.weixin.qq.com, mini.ems.com.cn, card.wecity.qq.com
+hostname = %APPEND% bi-mall.meituan.com, h5.baike.qq.com, kr.ele.me, wechat.xcx1.ctpark.cn, gos-static.yqslmall.com, static.wecity.qq.com, v.tuhu.org, ucmp-static.sf-express.com, web.chelaile.net.cn, api.chelaile.net.cn, atrace.chelaile.net.cn, wxsnsdythumb.wxs.qq.com, resource.wesure100.com, inf-prdapi.wesure.cn, vectorsdk.map.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, qnimg.zowoyoo.com, ump.ems.com.cn, wxa.wxs.qq.com, sdk.e.qq.com, yun-hl.3g.qq.com, ipv4.gdt.qq.com, pgdt.gtimg.cn, mp.weixin.qq.com, mini.ems.com.cn, card.wecity.qq.com, yxyylog.echargenet.com, cdn-evone-oss.echargenet.com, ms.jr.jd.com, api.m.jd.com, conf.diditaxi.com.cn, ma-adx.ctrip.com, m.ctrip.com, mbd.baidu.com, api.hellobike.com, m5.amap.com, res.pizzahut.com.cn, orders.kfc.com.cn, dynamicad.kfc.com.cn, res.kfc.com.cn, api.mcd.cn, 3pp.starbucks.com.cn
