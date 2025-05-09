@@ -1,28 +1,19 @@
-#!name=微信小程序净化
+#!name=畅停e行
 #!author=ChangXiaoqiang
-#!desc=去除微信小程序内的广告
-#!version=1.0.0
-#!homepage=https://github.com/ChangXiaoqiang/QuantumultX
+#!desc=去除微信小程序”畅停e行“内的广告
 #!icon=http://pic.downyi.com/upload/2021-5/202157103141606.png
-#!updated=2025-02-12
+#!updated=2025-05-10
+
+[Host]
+iosapps.itunes.apple.com = iosapps.itunes.apple.com.download.ks-cdn.com
 
 [URL Rewrite]
-
-# 小程序 - 畅停e行
+# 移除微信小程序”畅停e行“内的广告
 ^https:\/\/wechat\.xcx1\.ctpark\.cn\/\/cloud\/weChatApplets\/chh\/queryWeChatAdvertisingBySite - reject-dict
-^https:\/\/ct-bucket\.oss-cn-shenzhen\.aliyuncs\.com\/platform\/pic\/advertising\/ - reject
-
-# > 美团
-^https?:\/\/bi-mall\.meituan\.com\/mp\/check\/img.gif? - reject
-
-# 小程序 - 饿了么取餐
-^https?:\/\/kr\.ele\.me\/webapp\/advert\/ - reject
-
-# 小程序 - 元气森林
-^https:\/\/gos-static\.yqslmall\.com\/gos-admin\/online\/IMAGE\/ - reject
-
-# 小程序 - 腾讯健康
-^https:\/\/h5\.baike\.qq\.com\/api\/access\/json\/txjk\/cmd\/GetAdsRcm - reject
+^https:\/\/ct-bucket\.oss-cn-shenzhen\.aliyuncs\.com\/platform\/pic\/advertising\/ - reject-dict
+^https:\/\/pgdt\.gtimg\.cn\/ reject-200
+# 移除微信公众号文章底栏都在搜
+^https:\/\/mp\.weixin\.qq\.com\/mp\/relatedsearchword reject-dict
 
 [MITM]
-hostname = %APPEND% wechat.xcx1.ctpark.cn, ct-bucket.oss-cn-shenzhen.aliyuncs.com, bi-mall.meituan.com, kr.ele.me, gos-static.yqslmall.com, h5.baike.qq.com
+hostname = %APPEND% wechat.xcx1.ctpark.cn, ct-bucket.oss-cn-shenzhen.aliyuncs.com, pgdt.gtimg.cn, mp.weixin.qq.com
