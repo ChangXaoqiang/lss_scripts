@@ -1,9 +1,9 @@
-#!name = e充电 去广告
-#!desc = 过滤e充电广告
+#!name = e充电
+#!desc = e充电广告净化
 #!author = ChangXaoqiang
-#!tag = 去广告
+#!tag = 广告净化
 #!icon = https://pp.myapp.com/ma_icon/0/icon_42284428_1720767893/256
-#!date = 2025-1-3 03:17
+#!date = 2025-5-10 00:15
 
 [Rule]
 DOMAIN, cdn-evone.oss-cn-beijing.aliyuncs.com, reject-200
@@ -17,16 +17,13 @@ DOMAIN, cdn-evone.oss-cn-beijing.aliyuncs.com, reject-200
 ^https:\/\/yxyylog\.echargenet\.com\/ reject
 ^http:\/\/cdn-evone-oss\.echargenet\.com\/evone-materialpic\/ reject
 ^https:\/\/cdn-evone-oss\.echargenet\.com\/sgcc\/ reject
-#^https:\/\/cdn-evone-oss\.echargenet\.com\/resource\/ reject
 ^https:\/\/cdn-evone-oss\.echargenet\.com\/templateH5\/ reject
 ^https:\/\/cdn-evone-oss\.echargenet\.com\/yingxiao\/visualizationH5\/ reject
-#^https:\/\/cdn-evone-oss\.echargenet\.com\/yingxiao\/echargelife\/ reject
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.appsns\.open\.merchant\.merchant\.list\/ reject
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.appsns\.open\.merchant\.news\.pagelistapp\/ reject
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.echargeapi\.open\.ad\.getadmaterials\/ reject
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.h5gateway\.activity\.command\.queryallrule\/ reject
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.h5gateway\.internal\.registeractivity\.querybyareaid\/ reject
-#^https:\/\/terms\.alicdn\.com\/ reject
 ^https:\/\/www\.umeng\.com\/ reject
 
 [MitM]
