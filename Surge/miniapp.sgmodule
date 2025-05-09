@@ -1,9 +1,9 @@
 #!name=微信小程序广告净化
-#!desc=微信小程序广告拦截：车来了、EMS、元气森林、腾讯微保、顺丰速运、途虎养车、腾讯健康、美团、饿了么、畅停e行等
+#!desc=净化微信小程序广告，支持车来了、EMS、元气森林、腾讯微保、顺丰速运、途虎养车、腾讯健康、美团、饿了么、畅停e行等
 #!priority=3
 #!system=ios
 #!icon=http://www.kuaipng.com/Uploads/pic/w/2020/06-11/85112/water_85112_260_260.png
-#!category=CXQ
+#!category=广告净化
 #!author=ChangXiaoqiang
 #!date=2025-05-10
 
