@@ -74,17 +74,6 @@
 ^https?:\/\/aid\.m\.taobao\.com\/ - REJECT-DROP
 ^https?:\/\/optimus-ads\.amap\.com\/uploadimg\/d17bb44dde853569b03837b3cc091af6.gif - REJECT-DROP
 
-# > 百度地图
-^https?:\/\/hmma\.baidu\.com\/ - REJECT-DROP
-^https?:\/\/map-mobile-opnimg\.cdn\.bcebos\.com\/*.gif - REJECT-DROP
-^https?:\/\/dss0\.bdstatic\.com\/ - REJECT-DROP
-^https?:\/\/map-mobile-opnimg\.cdn\.bcebos\.com\/*.png - REJECT-DROP
-^https?:\/\/nsclick\.baidu\.com\/ - REJECT-DROP
-^https?:\/\/map-mobile-resource\.cdn\.bcebos\.com\/icon\/service\/trip-helper\/default\/chunJieBanner.png - REJECT-DROP
-^https?:\/\/cjh-amis\.cdn\.bcebos\.com\/2023-1\/1673417414557\/poi%20banner%20%403x%20%E6%8B%B7%E8%B4%9D.jpg - REJECT-DROP
-^https?:\/\/map-mobile-resource\.cdn\.bcebos\.com\/icon\/service\/periphery\/default\/*.gif - REJECT-DROP
-^https?:\/\/map-mobile-opnimg\.cdn\.bcebos\.com\/efba43686f5325057f2ee0d29d170bd2.png - REJECT-DROP
-
 # > 12306
 ^https?:\/\/ad\.12306\.cn\/res\/adfiles\/\/delivery\/ - REJECT-DROP
 ^https?:\/\/ad\.12306\.cn\/ad\/ser\/ - REJECT-DROP
@@ -123,6 +112,8 @@
 ^https:\/\/su\.bcebos\.com\/lbsnavi\/base\/online\/,REJECT // Added for: https://su.bcebos.com/lbsnavi/base/online/20250423111455/xxicon-new.gif
 # AbeamTV Unlock header
 ^https?:\/\/api\.abema\.io\/v\d\/ip\/check - reject
+
+# =============================================================================
 
 # Redirect Google Service
 ^https?:\/\/(www.)?g\.cn https://www.google.com 302
@@ -717,21 +708,9 @@ DOMAIN-SUFFIX, mp.weixin.qq.com, REJECT
 wb_launch.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js,type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua)
 wb_ad.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js,type=http-response,pattern=^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/photos/pic_recommend_status)
 
-# Netflix评分
-nf_rating.js = script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js,type=http-request,pattern=^https?://ios\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D
-nf_rating.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js,type=http-response,pattern=^https?://ios\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D
-
-# JD历史价格
-jd_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig)
-
 # 淘宝历史价格
 tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-request,pattern=^http://.+/amdc/mobileDispatch
 tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail
-
-# 知乎去广告
-zhihu_plus.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/api\.zhihu\.com\/(moments|topstory)(\/|\?)?(recommend|action=|feed_type=)(?!\/people),script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.js
-zhihu_plus.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/api\.zhihu\.com\/v4\/questions,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.js
-zhihu_plus.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/api\.zhihu\.com\/people,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.js
 
 # 哔哩哔哩去广告
 bilibili_plus.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/bilibili/bilibili_plus.js
