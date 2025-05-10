@@ -1,0 +1,9 @@
+#!name =网上国网
+#!category=Scriptable重写
+#!desc=95598 
+
+[Script]
+接口重写 = type=http-request, pattern=^https?:\/\/api\.wsgw-rewrite\.com\/electricity\/bill\/all, script-path=https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/js/WangShangGuoWang.js, requires-body=true, max-size=-1, timeout=60
+
+[MITM]
+hostname = %APPEND% api.wsgw-rewrite.com
