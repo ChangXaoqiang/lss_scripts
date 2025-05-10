@@ -1,0 +1,13 @@
+#!name=Github 429 Error Fix
+#!desc=修复Github报错误码429。转载自 @PoetryU
+#!date=2025-04-29
+#!author=PoetryU
+#!repo=https://github.com/PoetryU/Scientist
+#!category=通用增强
+#!url=https://raw.githubusercontent.com/PoetryU/Scientist/master/Surge/Modules/gh429.sgmodule
+
+[Header Rewrite]
+http-request ^https://.*\.githubusercontent\.com\/ header-replace Accept-Language en-us
+
+[MITM]
+hostname = %APPEND% *.githubusercontent.com
