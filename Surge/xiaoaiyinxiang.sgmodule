@@ -1,0 +1,18 @@
+#!name=小爱音箱
+#!author=https://surge.qingr.moe/
+#!desc=净化广告
+#!system=ios
+#!category=广告净化
+#!date=2025-05-10
+
+[General]
+
+force-http-engine-hosts = %APPEND% info.mina.xiaoaisound.com
+
+[MITM]
+
+hostname = %APPEND%, info.mina.xiaoaisound.com
+
+[Map Local]
+
+^https?:\/\/info\.mina\.xiaoaisound\.com\/(advertise|payGuide)\/ data-type=text data='{"code":0,"message":"Success","data":[]}' header='Content-Type:application/json'
