@@ -15,6 +15,8 @@
 ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\? url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/js/maimai_ads.js
 # 移除信息流和评论区大块广告 - 信息流广告focus_feed / 评论区广告gossip_detail_comment / 评论区广告feed_detail_comment?
 ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\? url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/js/maimai_ads.js
+移除信息流和评论区大块广告 = type=http-response, pattern=^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\?, script-path=https://kelee.one/Resource/Script/MaiMai/MaiMai_remove_ads.js, requires-body=true
+
 
 [MITM]
 hostname= %APPEND% open.taou.com, h3.open.taou.com

@@ -1,10 +1,9 @@
-#!name=微博净化
+#!name=微博
 #!desc=净化开屏广告、推广、获得会员图标、消息页及信息流净化。非原创，整理自其他人发布的插件，作者署名已经署名在插件描述中，如有问题，请联系作者。
 #!system=ios
 #!icon=https://companieslogo.com/img/orig/WB-9dcc889a.png?t=1720244494
-#!category=CXQ
-#!author=Kelee、CXQ
-#!date=2025-04-20
+#!category=广告净化
+#!date=2025-05-10
 
 [Rule]
 DOMAIN-SUFFIX,uve.weibo.com,DIRECT,extended-matching
@@ -49,6 +48,7 @@ DOMAIN-SUFFIX,biz.weibo.com,REJECT,extended-matching,pre-matching
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) data-type=text data="{}" status-code=200
 
 [Script]
+# Kelee 脚本
 移除首页推广 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
 
 移除首页顶部标签 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
@@ -89,18 +89,17 @@ DOMAIN-SUFFIX,biz.weibo.com,REJECT,extended-matching,pre-matching
 
 会员图标 = type=http-response, pattern=^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
 
-# 微博去广告以及去除各部分推广模块 - cherish
+# cherish 脚本
 微博净化 = type=http-response,pattern=^https?://m?api\.weibo\.c(n|om)/2/(cardlist|searchall|page|messageflow|statuses/(unread_)?friends(/|_)timeline|groups/timeline|statuses/(container_timeline|unread_hot_timeline|extend|video_mixtimeline)|profile/(me|container_timeline)|video/(community_tab|remind_info|tiny_stream_video_list)|checkin/show|\!/live/media_homelist|comments/build_comments|container/get_item|search/(finder|container_timeline|container_discover)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
 
 # 删除微博开屏广告 - cherish
 微博净化 = type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_launch.js
 
-# 自定义tab皮肤
+# 自定义tab皮肤 - cherish
 微博净化 = type=http-response,pattern=^https://api.weibo.cn/2/!/client/light_skin,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
 
 # 非会员设置tab皮肤 - cherish
 微博净化 = type=http-response,pattern=^https://new.vip.weibo.cn/littleskin/preview,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
 
-
 [MITM]
-hostname = %APPEND% *.weibo.cn, *.weibo.com, sinaurl.cn, t.cn, weibo.cn, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn,
+hostname = %APPEND% *.weibo.cn, *.weibo.com, sinaurl.cn, t.cn, weibo.cn, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn
