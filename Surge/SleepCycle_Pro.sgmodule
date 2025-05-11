@@ -1,0 +1,12 @@
+#!name=SleepCycle_Pro
+#!desc=解锁永久高级版。转载自https://t.me/GieGie777
+#脚本作者:https://t.me/GieGie777
+#更新时间:2024年
+#电报频道:https://t.me/GieGie777
+#使用声明：️仅供学习交流，🈲️商业用途
+
+[Script]
+SleepCycle_Pro = type=http-response,pattern=^https?:\/\/ch\.sleepcycle\.com\/api\/v1\/subscription/get$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/sleepcycle.js
+
+[MITM]
+hostname= %APPEND% ch.sleepcycle.com
