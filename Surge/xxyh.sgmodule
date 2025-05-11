@@ -1,0 +1,12 @@
+#!name=小熊油耗
+#!desc=小熊油耗解锁会员至2099年12月31日。转载自https://whatshub.top/surge
+#!icon=https://github.com/ChangXaoqiang/script/blob/30aa5c9150d51d380e4667fab03efb1035e43419/icon/xxyh.PNG?raw=true
+#!homepage=https://whatshub.top
+#!author=https://whatshub.top/surge
+#!category=解锁会员
+
+[Script]
+xiaoxiongyouhao=type=http-response,pattern=^http[s]?:\/\/www.xiaoxiongyouhao.com\/api\/vip\/index.php,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/xiaoxiongyouhao.js
+
+[MITM]
+hostname = %APPEND% www.xiaoxiongyouhao.com
