@@ -13,23 +13,3 @@
 [MITM]
 hostname = %APPEND% api.revenuecat.com
 
-/*
-* @Author: XiaoMao
-* @LastMod: 2024-10-03
-
-\嗯\背\ \p\r\e\m\i\u\m\
-
-仅供学习参考，请于下载后24小时内删除
-
-# 小版本更新请查看更新日志 ｜ 或加入xiaomao组织⬇️
-# 微信公众号 【小帽集团】
-# XiaoMao · TG通知频道：https://t.me/xiaomaoJT
-# XiaoMao · Tg脚本频道：https://t.me/XiaoMaoScript
-# XiaoMao · GitHub仓库：https://github.com/xiaomaoJT/QxScript
-
-使用方法：
-1、Surge > 首页 > 模块 > 安装本模块
-2、打开软件 > 设置 > 点击「恢复购买」
-3、解锁成功理论上有消息弹窗，成功后即可关闭脚本。[🚨🚨🚨无效请关掉软件进程后，先打开脚本，再进软件进行解锁]
-4、⚠️⚠️⚠️解锁脚本不可共存，请逐一使用并关闭。
-*/
