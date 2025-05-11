@@ -1,6 +1,7 @@
 #!name = Pillow 2099
 #!desc = Pillow 会员解锁，需常开脚本。
-#!tag = 会员解锁
+#!tag = 解锁会员
+#!category = 解锁会员
 #!system = iOS iPadOS
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/49/8d/f3/498df3d5-f4c5-38fa-964f-e1134c9cc2df/AppIcon-v5-0-0-1x_U007epad-0-0-0-1-0-0-P3-85-220.png/460x0w.webp
 #!date = 2025-05-09 22:44
