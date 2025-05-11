@@ -1,0 +1,13 @@
+#!name=Adapty
+#!desc=解锁应用内购平台adapty：https://adapty.io/zh/
+#!icon=https://adapty.io/assets/media/favicons/apple-touch-icon-57x57.png?raw=true
+#!homepage=https://t.me/ddm1023
+#!author=https://t.me/ddm1023
+#!category=解锁会员
+#!tag=解锁会员
+
+[Script]
+xiaoxiongyouhao=type=http-response,pattern=^https?:\/\/api\.adapty\.io\/api\/v\d\/sdk\/(analytics\/profiles|in-apps\/(apple\/receipt\/validate|purchase-containers)|purchase\/app-store),requires-body=1,script-path=https://raw.githubusercontent.com/ChangXaoqiang/script/refs/heads/main/js/adapty.js
+
+[MITM]
+hostname = %APPEND% api.adapty.io
