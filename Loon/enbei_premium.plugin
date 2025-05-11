@@ -1,0 +1,36 @@
+#!name=嗯背单词
+#!desc=嗯背单词 解锁永久高级版
+#!author=XiaoMao
+#!icon=https://github.com/ChangXaoqiang/script/blob/main/icon/enbeidanci.PNG?raw=true
+#!homepage=https://github.com/xiaomaoJT/QxScript
+#!date=2025-05-10
+#!category=解锁会员
+
+[Script]
+http-response https:\/\/api\.revenuecat\.com\/v1\/(subscribers|receipts) script-path=https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/eb.js, requires-body=true, timeout=10, tag=嗯背_Premium
+http-request https:\/\/api\.revenuecat\.com\/v1\/(subscribers|receipts) script-path=https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/eb.js, timeout=10, tag=嗯背_Premium_Header
+
+[MITM]
+hostname = api.revenuecat.com
+
+#!使用说明
+/*
+* @Author: XiaoMao
+* @LastMod: 2024-10-03
+
+\嗯\背\ \p\r\e\m\i\u\m\
+
+仅供学习参考，请于下载后24小时内删除
+
+# 小版本更新请查看更新日志 ｜ 或加入xiaomao组织⬇️
+# 微信公众号 【小帽集团】
+# XiaoMao · TG通知频道：https://t.me/xiaomaoJT
+# XiaoMao · Tg脚本频道：https://t.me/XiaoMaoScript
+# XiaoMao · GitHub仓库：https://github.com/xiaomaoJT/QxScript
+
+使用方法：
+1、Loon > 配置 > 插件 > 安装本插件
+2、打开软件 > 设置 > 点击「恢复购买」
+3、解锁成功理论上有消息弹窗，成功后即可关闭脚本。[🚨🚨🚨无效请关掉软件进程后，先打开脚本，再进软件进行解锁]
+4、⚠️⚠️⚠️解锁脚本不可共存，请逐一使用并关闭。
+*/
