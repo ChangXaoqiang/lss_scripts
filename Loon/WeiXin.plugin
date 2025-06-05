@@ -4,6 +4,7 @@
 
 [Script]
 http-request ^https?:\/\/scanpay\.tdzntech\.com\/scanpay\/qrcode\/dopayment.*payScene=-1 script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/payAdBlock.js, requires-body=false, timeout=5
+http-request ^https?:\/\/scanpay\.tdzntech\.com\/scanpay\/xqrcode\/.* script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/xqrcodeAdBlock.js, requires-body=false, timeout=5
 
 [MITM]
 hostname = scanpay.tdzntech.com
