@@ -1,1 +1,9 @@
+#!name=微信广告拦截
+#!desc=拦截微信扫码页面中的广告请求（如 payScene=-1）
+#!author=ChangXaoqiang
 
+[Script]
+http-request ^https?:\/\/scanpay\.tdzntech\.com\/scanpay\/qrcode\/dopayment.*payScene=-1 script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/payAdBlock.js, requires-body=false, timeout=5
+
+[MITM]
+hostname = scanpay.tdzntech.com
