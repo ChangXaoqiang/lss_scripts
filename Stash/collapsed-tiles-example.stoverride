@@ -1,6 +1,5 @@
 name: 流媒体服务可用性检查
 desc: 检查各种流媒体和AI服务的可用性状态，支持一键测试连通性
-website: https://github.com/StashNetworks/misc
 icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
 tags: ["流媒体", "AI服务", "可用性检查"]
 
@@ -47,25 +46,55 @@ tiles:
     collapsed: true
     url: https://open.spotify.com
     interval: 600
+  - name: HBO-Check
+    title: HBO Max
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HBO.png
+    backgroundColor: "#8B00FF"
+    collapsed: true
+    url: https://www.hbomax.com
+    interval: 600
+  - name: Amazon-Check
+    title: Amazon Prime
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Prime_Video.png
+    backgroundColor: "#1F3B5F"
+    collapsed: true
+    url: https://www.primevideo.com
+    interval: 600
+  - name: Hulu-Check
+    title: Hulu
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hulu.png
+    backgroundColor: "#1CE783"
+    collapsed: true
+    url: https://www.hulu.com
+    interval: 600
 
 script-providers:
   ChatGPT-Web-Check:
-    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/chatgpt-web.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/chatgpt-web.js
     interval: 86400
   ChatGPT-App-Check:
-    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/chatgpt-app.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/chatgpt-app.js
     interval: 86400
   YouTube-Check:
-    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/youtube.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/youtube.js
     interval: 86400
   Netflix-Check:
-    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/netflix.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/netflix.js
     interval: 86400
   Disney-Check:
-    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/disney.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/disney.js
     interval: 86400
   Spotify-Check:
-    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/spotify.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/spotify.js
+    interval: 86400
+  HBO-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/hbo.js
+    interval: 86400
+  Amazon-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/amazon.js
+    interval: 86400
+  Hulu-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/hulu.js
     interval: 86400
 
 # 使用说明：
@@ -73,3 +102,18 @@ script-providers:
 # 2. 每个磁贴会显示对应服务的连通状态
 # 3. 点击磁贴可手动触发检查
 # 4. 如需添加更多服务，请参照现有格式添加tiles和script-providers配置
+# 5. 支持的服务：
+#    - ChatGPT Web和App访问检测
+#    - YouTube Premium解锁检测
+#    - Netflix解锁检测（区分完整解锁和自制剧解锁）
+#    - Disney+解锁检测
+#    - Spotify解锁检测
+#    - HBO Max解锁检测
+#    - Amazon Prime Video解锁检测
+#    - Hulu解锁检测
+# 6. 检测结果说明：
+#    - 已解锁/支持访问：显示"已解锁 ➟ 地区代码"或"支持访问 ✓"
+#    - 未解锁/不支持：显示"未支持 🚫"或"该节点不支持解锁"
+#    - 检测失败：显示"检测失败，请重试"
+#    - 检测超时：显示"检测超时 🚦"
+# 7. 自动检测间隔为600秒(10分钟)，脚本更新间隔为86400秒(24小时)
