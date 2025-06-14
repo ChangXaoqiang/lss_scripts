@@ -1,7 +1,7 @@
 /*
  * Spotify服务可用性检测脚本
  * 更新日期：2024.06.01
- * 版本：1.0
+ * 版本：1.1
  */
 
 const { REQUEST_HEADERS } = require('./common')
@@ -25,22 +25,39 @@ async function check_spotify() {
     }
     
     $httpClient.get(option, function (error, response, data) {
-      if (error != null || response.status !== 200) {
+      if (error) {
         resolve('检测失败，请重试')
         return
       }
-      
-      if (data.indexOf('Spotify is currently not available in your country') !== -1) {
+
+      if (response.status === 403) {
         resolve('未支持 🚫')
         return
       }
       
-      let region = ''
-      let re = new RegExp('"countryCode":"(.*?)"', 'gm')
-      let result = re.exec(data)
-      if (result != null && result.length === 2) {
-        region = result[1]
-        resolve('已解锁 ➟ ' + region.toUpperCase())
+      if (response.status !== 200) {
+        resolve('检测失败，请重试')
+        return
+      }
+      
+      if (data.indexOf('Spotify is currently not available in your country') !== -1 || 
+          data.indexOf('Spotify is not available in') !== -1) {
+        resolve('未支持 🚫')
+        return
+      }
+      
+      // 检查是否包含Premium内容标记
+      if (data.indexOf('premium-upsell') !== -1) {
+        let region = ''
+        let re = new RegExp('"countryCode":"([A-Z]{2})"', 'i')
+        let match = data.match(re)
+        
+        if (match && match[1]) {
+          region = match[1].toUpperCase()
+          resolve('已解锁 ➟ ' + region)
+        } else {
+          resolve('已解锁 ✓')
+        }
         return
       }
       
