@@ -54,9 +54,6 @@ script-providers:
   Netflix-Check:
     url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/netflix.js
     interval: 86400
-  Spotify-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/spotify.js
-    interval: 86400
 
 # 使用说明：
 # 1. 此配置文件用于在Stash仪表盘创建可折叠的服务可用性检查磁贴
@@ -67,7 +64,6 @@ script-providers:
 #    - ChatGPT Web和App访问检测
 #    - YouTube Premium解锁检测
 #    - Netflix解锁检测（区分完整解锁和自制剧解锁）
-#    - Spotify解锁检测
 # 6. 检测结果说明：
 #    - 已解锁/支持访问：显示"已解锁 ➟ 地区代码"或"支持访问 ✓"
 #    - 未解锁/不支持：显示"未支持 🚫"或"该节点不支持解锁"
