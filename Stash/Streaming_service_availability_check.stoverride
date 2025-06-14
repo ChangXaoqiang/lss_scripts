@@ -32,13 +32,6 @@ tiles:
     collapsed: true
     url: https://www.netflix.com
     interval: 600
-  - name: Spotify-Check
-    title: Spotify
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
-    backgroundColor: "#1db954"
-    collapsed: true
-    url: https://open.spotify.com
-    interval: 600
 
 
 script-providers:
