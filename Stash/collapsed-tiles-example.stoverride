@@ -1,0 +1,83 @@
+name: 流媒体服务可用性检查
+desc: 检查各种流媒体和AI服务的可用性状态，支持一键测试连通性
+website: https://github.com/StashNetworks/misc
+icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
+tags: ["流媒体", "AI服务", "可用性检查"]
+
+tiles:
+  - name: ChatGPT-Web-Check
+    title: ChatGPT Web
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+    backgroundColor: "#74aa9c"
+    collapsed: true
+    url: https://chat.openai.com
+    interval: 600
+  - name: ChatGPT-App-Check
+    title: ChatGPT App
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+    backgroundColor: "#74aa9c"
+    collapsed: true
+    url: https://chatgpt.com
+    interval: 600
+  - name: YouTube-Check
+    title: YouTube
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    backgroundColor: "#ff0000"
+    collapsed: true
+    url: https://www.youtube.com
+    interval: 600
+  - name: Netflix-Check
+    title: Netflix
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+    backgroundColor: "#e50914"
+    collapsed: true
+    url: https://www.netflix.com
+    interval: 600
+  - name: Disney-Check
+    title: Disney+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney+.png
+    backgroundColor: "#1a3676"
+    collapsed: true
+    url: https://www.disneyplus.com
+    interval: 600
+  - name: Spotify-Check
+    title: Spotify
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+    backgroundColor: "#1db954"
+    collapsed: true
+    url: https://open.spotify.com
+    interval: 600
+
+script-providers:
+  ChatGPT-Web-Check:
+    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/chatgpt-web.js
+    interval: 86400
+  ChatGPT-App-Check:
+    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/chatgpt-app.js
+    interval: 86400
+  YouTube-Check:
+    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/youtube.js
+    interval: 86400
+  Netflix-Check:
+    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/netflix.js
+    interval: 86400
+  Disney-Check:
+    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/disney.js
+    interval: 86400
+  Spotify-Check:
+    url: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/spotify.js
+    interval: 86400
+
+cron:
+  script:
+    - name: 定时刷新服务状态
+      cron: "0 */12 * * *"
+      script-path: https://fastly.jsdelivr.net/gh/StashNetworks/misc@main/collapsed-tiles/script/refresh-all.js
+      timeout: 60
+
+# 使用说明：
+# 1. 此配置文件用于在Stash仪表盘创建可折叠的服务可用性检查磁贴
+# 2. 每个磁贴会显示对应服务的连通状态
+# 3. 点击磁贴可手动触发检查
+# 4. 所有服务会每12小时自动检查一次
+# 5. 如需添加更多服务，请参照现有格式添加tiles和script-providers配置
