@@ -70,31 +70,31 @@ tiles:
 
 script-providers:
   ChatGPT-Web-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/chatgpt-web.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/chatgpt-web.js
     interval: 86400
   ChatGPT-App-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/chatgpt-app.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/chatgpt-app.js
     interval: 86400
   YouTube-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/youtube.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/youtube.js
     interval: 86400
   Netflix-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/netflix.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/netflix.js
     interval: 86400
   Disney-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/disney.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/disney.js
     interval: 86400
   Spotify-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/spotify.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/spotify.js
     interval: 86400
   HBO-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/hbo.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/hbo.js
     interval: 86400
   Amazon-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/amazon.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/amazon.js
     interval: 86400
   Hulu-Check:
-    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/hulu.js
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/main/js/hulu.js
     interval: 86400
 
 # 使用说明：
