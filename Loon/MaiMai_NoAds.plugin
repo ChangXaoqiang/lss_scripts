@@ -1,10 +1,10 @@
 [Plugin]
 # 脉脉去广告
-name = 脉脉广告屏蔽
-desc = 全面屏蔽脉脉App内各类广告，包括开屏广告、信息流广告、评论区广告、推广卡片等，提升使用体验。适配最新版本脉脉客户端，持续更新维护。
-author = fmz200
-version = 1.0.1
-icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ae/eb/4b/aeeb4b73-53f9-0662-5e1a-b7d0a4fab33d/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/434x0w.webp
+#!name = 脉脉广告屏蔽
+#!desc = 全面屏蔽脉脉App内各类广告，包括开屏广告、信息流广告、评论区广告、推广卡片等，提升使用体验。适配最新版本脉脉客户端，持续更新维护。
+#!author = fmz200
+#!version = 2025.6.26
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ae/eb/4b/aeeb4b73-53f9-0662-5e1a-b7d0a4fab33d/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/434x0w.webp
 
 [URL Rewrite]
 # 1.屏蔽开屏广告、职位页面横幅广告
