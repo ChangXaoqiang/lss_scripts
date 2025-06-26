@@ -1,0 +1,29 @@
+#!name = 天府系列广告屏蔽
+#!desc = 全面屏蔽天府市民云、天府手机银行、天府银行小程序、天府通等天府系列应用的各类广告，包括开屏广告、弹窗广告、缴费广告、首页推广等，提升使用体验。适用于成都地区用户。
+#!tag = 广告净化
+#!author = fmz200
+#!date = 2025-6-27
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ec/3d/1c/ec3d1ca2-0e90-2627-4b79-19f24cc0b329/AppIcon-0-0-1x_U007emarketing-0-6-0-0-85-220.png/246x0w.webp
+
+[Rewrite]
+# 天府市民云 - 版本检查广告
+^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v5\/core\/version reject-200
+
+# 天府市民云 - 应用广告处理
+^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd response-body officialAdvertResultVo response-body random-response
+
+# 天府手机银行 - 广告图片
+^https?:\/\/cgbank\.oss-cn-shenzhen\.aliyuncs\.com\/visual\/advertisingImg\/.+.jpg reject-200
+
+# 天府银行小程序 - 缴费弹窗广告
+^https?:\/\/chl\.tf\.cn\/channelmg\/sys\/socso\/order\/queryOrderInfo response-body "imgUrl" response-body "imgUrl0"
+^https?:\/\/chl\.tf\.cn\/channelmg\/sys\/socso\/socsonew\/queryIsRealNameAdertInfo reject-dict
+
+# 天府银行小程序 - 首页弹窗广告
+^https?:\/\/wechat\.tf\.cn\/mini-financial\/model\/queryPopup reject-dict
+
+# 天府通 - 广告管理系统
+^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams\/ reject-dict
+
+[MITM]
+hostname = tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, cgbank.oss-cn-shenzhen.aliyuncs.com, chl.tf.cn, wechat.tf.cn, ams-cdn.cdtft.cn
