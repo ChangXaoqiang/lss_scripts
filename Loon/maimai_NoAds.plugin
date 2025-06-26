@@ -1,0 +1,26 @@
+[Plugin]
+# 脉脉去广告
+name = 脉脉去广告
+desc = 屏蔽脉脉App内各类广告
+author = fmz200
+version = 1.0.0
+
+[URL Rewrite]
+# 开屏广告、职位页面横幅
+^https:\/\/(h3\.)?open\.taou\.com\/maimai\/adshow\? reject
+
+# 赠送礼物 - 横幅
+^https:\/\/(h3\.)?open\.taou\.com\/maimai\/pay\/v5\/check_gift\? reject
+
+# 帖子文末推广卡片
+^https:\/\/(h3\.)?open\.taou\.com\/maimai\/go_gossip_darwin\/external\/v2\/query_flow_cards\? reject
+
+[Script]
+# 帖子末尾 - 看过此贴的用户也在看
+http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/maimai/maimai_ads.js
+
+# 移除信息流和评论区大块广告
+http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/maimai/maimai_ads.js
+
+[MITM]
+hostname = open.taou.com, h3.open.taou.com
