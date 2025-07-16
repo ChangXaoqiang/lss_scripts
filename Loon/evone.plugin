@@ -3,7 +3,7 @@
 #!author = ChangXaoqiang
 #!tag = 广告净化
 #!icon = https://pp.myapp.com/ma_icon/0/icon_42284428_1720767893/256
-#!date = 2025-5-10 00:15
+#!date = 2025-7-16
 
 [Rule]
 DOMAIN, cdn-evone.oss-cn-beijing.aliyuncs.com, reject-200
@@ -25,6 +25,8 @@ DOMAIN, cdn-evone.oss-cn-beijing.aliyuncs.com, reject-200
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.h5gateway\.activity\.command\.queryallrule\/ reject
 ^https:\/\/api-evone\.echargenet\.com\/gw\/evone\.h5gateway\.internal\.registeractivity\.querybyareaid\/ reject
 ^https:\/\/www\.umeng\.com\/ reject
+^https?:\/\/cdn-evone-ceph\.echargenet\.com\/gw-emas-cdn\/63c4e3b558bb610008969f89 reject-200
+^https?:\/\/cdn-evone-ceph\.echargenet\.com\/gw-emas-cdn reject-200
 
 [MitM]
-hostname = cdn-evone.oss-cn-beijing.aliyuncs.com, cdn-evone-oss.echargenet.com, api-evone.echargenet.com, adash-evone.echargenet.com, yxyylog.echargenet.com, api-evone.echargenet.com, errlog.umeng.com, terms.alicdn.com, www.umeng.com
+hostname = cdn-evone-ceph.echargenet.com, cdn-evone.oss-cn-beijing.aliyuncs.com, cdn-evone-oss.echargenet.com, api-evone.echargenet.com, adash-evone.echargenet.com, yxyylog.echargenet.com, api-evone.echargenet.com, errlog.umeng.com, terms.alicdn.com, www.umeng.com
