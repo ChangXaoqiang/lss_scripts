@@ -3,7 +3,7 @@
 #!author = ChangXiaoqiang[https://github.com/ChangXaoqiang/script]
 #!tag = 去广告
 #!icon = http://www.kuaipng.com/Uploads/pic/w/2020/06-11/85112/water_85112_260_260.png
-#!date = 2025-04-20
+#!date = 2025-07-22
 
 [Rewrite]
 # ===== 腾讯健康相关广告 =====
@@ -58,5 +58,9 @@
 ^https:\/\/img\.ithome\.com\/zuihuimai\/ reject-img
 ^https:\/\/adashbc\.ut\.taobao\.com\/ reject-img
 
+# ===== 闪送广告 =====
+^https:\/\/miniprogram\.ishansong\.com\/cms\/faq\/query reject
+^https:\/\/ads\.ishansong\.com\/advert reject
+
 [MitM]
-hostname = 360buyimg.com, 4gimg.map.qq.com, adashbc.ut.taobao.com, aiad-aisuda.cdn.bcebos.com, api.wecity.qq.com, card.wecity.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, h5.baike.qq.com, img.ithome.com, iosapp.click, kr.ele.me, lego_next_resources.wecity.qq.com, m.360buyimg.com, mini.ems.com.cn, ossgw.alicdn.com, pgdt.gtimg.cn, resource.wesure100.com, static.wecity.qq.com, wechat.xcx1.ctpark.cn, wximg.wxs.qq.com
+hostname = miniprogram.ishansong.com, ads.ishansong.com, 360buyimg.com, 4gimg.map.qq.com, adashbc.ut.taobao.com, aiad-aisuda.cdn.bcebos.com, api.wecity.qq.com, card.wecity.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, h5.baike.qq.com, img.ithome.com, iosapp.click, kr.ele.me, lego_next_resources.wecity.qq.com, m.360buyimg.com, mini.ems.com.cn, ossgw.alicdn.com, pgdt.gtimg.cn, resource.wesure100.com, static.wecity.qq.com, wechat.xcx1.ctpark.cn, wximg.wxs.qq.com
