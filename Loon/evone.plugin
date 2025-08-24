@@ -3,7 +3,7 @@
 #!author = ChangXaoqiang
 #!tag = 广告净化
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2e/04/41/2e044175-227b-dec3-a4d5-8dc18d5829bd/AppIcon-0-0-1x_U007emarketing-0-6-0-0-85-220.png/460x0w.webp
-#!date = 2025-7-16
+#!date = 2025-8-24
 
 [Rule]
 DOMAIN, cdn-evone.oss-cn-beijing.aliyuncs.com, reject-200
