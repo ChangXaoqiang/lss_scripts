@@ -1,9 +1,9 @@
-#!name=e充电
-#!desc=e充电应用内广告净化
+#!name=e充电+云快充+小桔充电
+#!desc=e充电+云快充+小桔充电应用内广告净化
 #!system=ios
 #!category=广告净化
 #!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2e/04/41/2e044175-227b-dec3-a4d5-8dc18d5829bd/AppIcon-0-0-1x_U007emarketing-0-6-0-0-85-220.png/460x0w.webp
-#!date=2025-07-16
+#!date=2025-08-24
 
 [URL Rewrite]
 ^https?:\/\/cdn-evone\.oss-cn-beijing\.aliyuncs\.com\/cms_img\/171487559706.png - reject
@@ -13,5 +13,16 @@
 ^https?:\/\/cdn-evone-ceph\.echargenet\.com\/gw-emas-cdn\/63c4e3b558bb610008969f89 - reject-200
 ^https?:\/\/cdn-evone-ceph\.echargenet\.com\/gw-emas-cdn - reject-200
 
+# 云快充 YKC小程序 - 去除页面内广告推广
+^https:\/\/gw3\.ykccn\.com\/api\/omp\/mt\/enterpriseWeChatConfig\/app\/queryCityConfig - reject
+^https:\/\/gw3\.ykccn\.com\/api\/omp\/mt\/appAdvertising\/queryAdvertisingByParams - reject
+^https:\/\/gw3\.ykccn\.com\/api\/omp\/mt\/charge\/activity\/package\/newest - reject
+
+# 小桔充电 小程序 - 去除页面内广告推广
+^https:\/\/energy\.xiaojukeji\.com\/mission\/api\/page\/activityInfo - reject
+^https:\/\/energy\.xiaojukeji\.com\/mission\/api\/page\/getPageDetail - reject
+^https:\/\/energy\.xiaojukeji\.com\/energy\/hummer\/api\/resource\/display - reject
+^https:\/\/energy\.xiaojukeji\.com\/am\/marketing\/api\/member\/facade\/charge\/personal\/center - reject
+
 [MITM]
-hostname = %APPEND% cdn-evone-ceph.echargenet.com, cdn-evone.oss-cn-beijing.aliyuncs.com, cdn-evone-oss.echargenet.com, api-evone.echargenet.com
+hostname = %APPEND% cdn-evone-ceph.echargenet.com, cdn-evone.oss-cn-beijing.aliyuncs.com, cdn-evone-oss.echargenet.com, api-evone.echargenet.com, gw3.ykccn.com, energy.xiaojukeji.com
