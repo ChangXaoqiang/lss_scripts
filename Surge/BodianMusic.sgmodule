@@ -51,8 +51,4 @@ enable-script = true
 波点音乐 = type=http-response, script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js, requires-body=true, timeout=60, tag=波点音乐
 
 [MITM]
-hostname = bd-api.kuwo.cn
-hostname = kuwo.cn
-hostname = h5app.kuwo.cn
-hostname = bodianimgcdn.kuwo.cn
-hostname = ad.tencentmusic.com
+hostname = bd-api.kuwo.cn,kuwo.cn,h5app.kuwo.cn,bodianimgcdn.kuwo.cn,ad.tencentmusic.com
