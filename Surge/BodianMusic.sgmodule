@@ -2,9 +2,6 @@
 #!desc=解锁波点音乐会员，移除开屏广告、横幅推广、悬浮广告以及商城Tab，建议卸载重装使用。
 #!author=伟人[https://github.com/WeiGiegie], 可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md], ZenmoFeiShi[https://github.com/ZenmoFeiShi], wish[https://github.com/mist-whisper]
 #!tag=解锁去广告
-#!system=iOS iPadOS
-#!system_version=15
-#!surge_version=5.18.0
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BodianMusic.png
 #!date=2025-08-31 00:00:00
