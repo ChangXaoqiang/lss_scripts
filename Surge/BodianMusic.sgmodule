@@ -1,0 +1,56 @@
+# === 波点音乐 - 解锁会员 & 去广告 ===
+# Author: 伟人[https://github.com/WeiGiegie], 可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md], ZenmoFeiShi[https://github.com/ZenmoFeiShi], wish[https://github.com/mist-whisper]
+# Version: 2025.08.31
+# Description: 解锁波点音乐会员，移除开屏广告、横幅推广、悬浮广告及商城Tab，建议卸载重装使用。
+# Tags: 解锁去广告
+# Platform: iOS, iPadOS
+# Minimum Surge Version: 5.0.0
+# Homepage: https://github.com/mist-whisper/Loon/blob/master/README.md
+# Icon: https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BodianMusic.png
+
+[General]
+mode = direct
+enable-script = true
+
+[Rewrite]
+# 移除开屏广告
+^https://ad\.tencentmusic\.com/config/uni reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/(play|service|advert)\/advert\/ reject-dict
+
+# 移除悬浮广告
+^https:\/\/bd-api\.kuwo\.cn\/api\/popup\/ reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/pay\/vip\/invitation\/assist\/popup\? reject-dict
+
+# 移除横幅推广
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/banner\/ reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/home\/module\?.*&moduleId=6 reject-dict
+
+# 移除会员角标
+^https:\/\/bd-api\.kuwo\.cn\/api\/pay\/vip\/lowPriceText\? reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/global\/config\/vipEnter\? reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/ucenter\/vip\/give\/config\? reject-dict
+
+# 移除搜索框热词
+^https:\/\/bd-api\.kuwo\.cn\/api\/search\/topic\/word reject-dict
+
+# 移除主页商城tab（修改配置：showShopEntry=false）
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/global\/config\/scene script-response-body https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js
+
+# 精简主页（移除 type=1,4,5,6,8,9 的模块）
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/home\/index script-response-body https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js
+
+# 移除“听点儿不一样的”推荐内容
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/resource\/recommend\? script-response-body https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js
+
+# 移除评论区商品周边（删除 putao 字段）
+^https:\/\/bd-api\.kuwo\.cn\/api\/comments\/v3\/topInfo script-response-body https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js
+
+# 移除沉浸电台 banner（清空 data）
+^https:\/\/bd-api\.kuwo\.cn\/api\/voice\/room\/v2\/sidebar script-response-body https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js
+
+[Script]
+# 波点音乐核心脚本：处理 JSON 响应体
+波点音乐 = type=http-response, script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js, requires-body=true, timeout=60, tag=波点音乐
+
+[MITM]
+hostname = bd-api.kuwo.cn, kuwo.cn, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, ad.tencentmusic.com
