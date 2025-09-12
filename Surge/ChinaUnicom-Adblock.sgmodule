@@ -10,16 +10,13 @@
 DOMAIN,m1.ad.10010.com,REJECT
 
 [Script]
-# 移除主页几个小按钮 (通通 & 签到)
-^https:\/\/m\.client\.10010\.com\/clientIndex\/v1\/api\/navHome requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/unicom/unicom.navHome.js, tag=ChinaUnicom-NavHome
+^https:\/\/m\.client\.10010\.com\/clientIndex\/v1\/api\/navHome requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-NavHome
 
-# 移除主页浮窗和底部推广
-^https:\/\/m\.client\.10010\.com\/clientIndex\/homefusion\/fuInter requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/unicom/unicom.fuInter.js, tag=ChinaUnicom-FuInter
+^https:\/\/m\.client\.10010\.com\/clientIndex\/homefusion\/fuInter requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-FuInter
 
-# 移除搜索框推广
-^https:\/\/m\.client\.10010\.com\/search_service\/tyfbSearch\/searchDiscoverListExpress requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/unicom/unicom.searchDiscoverListExpress.js, tag=ChinaUnicom-SearchDiscover
+^https:\/\/m\.client\.10010\.com\/search_service\/tyfbSearch\/searchDiscoverListExpress requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-SearchDiscover
 
-^https:\/\/m\.client\.10010\.com\/search_service\/search\/searchScrollWord requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/unicom/unicom.searchScrollWord.js, tag=ChinaUnicom-SearchScroll
+^https:\/\/m\.client\.10010\.com\/search_service\/search\/searchScrollWord requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-SearchScroll
 
 [MITM]
 hostname = m.client.10010.com
