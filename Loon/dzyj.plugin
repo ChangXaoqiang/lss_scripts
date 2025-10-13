@@ -1,0 +1,16 @@
+#!name = 地震预警svip
+#!desc = 📡 实时监测全国地震预警信息，提供震中分布、震级详情及倒计时预警通知。支持推送提醒、灾害地图可视化，并可自定义预警范围。
+#!tag = 会员破解
+#!author = Yu9191
+#!date = 2025-10-13
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/0c/b4/670cb480-5022-f34f-3566-e873569fd2e7/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/460x0w.webp
+
+[Script]
+enable = true
+type = http-response
+pattern = https://mobile-new.chinaeew.cn/v1/order/apple/vip
+requires-body = true
+script-path = https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/dzyj.js
+
+[Mitm]
+hostname = mobile-new.chinaeew.cn
