@@ -1,7 +1,9 @@
 /*
-app：地址预警
+app：地震预警
+说明：我不是原作者，上传到本人仓库是为防止原脚本删除。原脚本地址https://raw.githubusercontent.com/Yu9191/Rewrite/refs/heads/main/dzyj.js
+
 [rewrite_local]
-https://mobile-new.chinaeew.cn/v1/order/apple/vip url script-response-body https://raw.githubusercontent.com/Yu9191/Rewrite/refs/heads/main/dzyj.js
+https://mobile-new.chinaeew.cn/v1/order/apple/vip url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/dzyj.js
 [mitm]
 hostname = mobile-new.chinaeew.cn
 */
