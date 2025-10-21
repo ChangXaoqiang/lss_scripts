@@ -3,8 +3,6 @@
 #!category=通用增强
 #!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e8/10/b2/e810b2d0-a6df-a615-53cf-80b86881c49d/AppIcon-0-0-85-220-0-0-4-0-2x-sRGB.png/460x0w.webp
 
-[General]
-use-local-host-item-for-proxy = true
 
 [Host]
 # Fuck Telegram bad ips
