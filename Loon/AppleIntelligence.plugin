@@ -1,18 +1,10 @@
 #!name = Apple Intelligence 修复规则
-#!desc = 恢复 ChatGPT / Apple Intelligence 功能（适配 iOS 26.1 Beta 2～3）
-#!tag = ChatGPT, AppleIntelligence, 通用增强
+#!desc = 解决港版iPhone iOS 26.1 Beta 2～3 封禁 ChatGPT / Apple Intelligence 问题
+#!tag = AppleIntelligence
 #!author = ChangXiaoqiang
 #!date = 2025-10-22
 #!icon = https://github.com/ChangXaoqiang/lss_scripts/blob/main/icon/Apple_Intelligence.png?raw=true
-
-# ============================================
-# 🍎 Apple Intelligence 功能修复插件 (for Loon)
-# 解决 iOS 26.1 Beta 2～3 封禁 ChatGPT / Apple Intelligence 问题
-# 作者：ChangXiaoqiang
-# 更新时间：2025-10-22
-# 参考链接：
-# https://raw.githubusercontent.com/kanaelovemoney/Apple-Intelligence/refs/heads/main/Apple-Intelligence
-# ============================================
+# 参考链接：https://raw.githubusercontent.com/kanaelovemoney/Apple-Intelligence/refs/heads/main/Apple-Intelligence
 
 [Rule]
 # ChatGPT / Apple Intelligence 相关域名走代理
@@ -29,8 +21,7 @@ DOMAIN-SUFFIX,apps.mzstatic.com,Proxy
 DOMAIN-KEYWORD,apple-intelligence,Proxy
 
 [Rewrite]
-# 可选：如需强制启用 ChatGPT 扩展或中转流量，可加入下列规则
-# （仅当系统 AI 功能异常时启用）
+# 可选：如需强制启用 ChatGPT 扩展或中转流量，可加入下列规则（仅当系统 AI 功能异常时启用）
 ^https?:\/\/(.*\.)?apple\.com\/(.*ai|chatgpt|intelligence).* header-add X-AI-Bypass true
 
 [MITM]
