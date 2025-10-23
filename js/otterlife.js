@@ -10,7 +10,7 @@
 **************************************
 
 [rewrite_local]
-^https?:\/\/otter-api\.codefuture\.top\/v\d\/user\/current url script-response-body https://raw.githubusercontent.com/chxm1023/Rewrite/main/otterlife.js
+^https?:\/\/otter-api\.codefuture\.top\/v\d\/user\/current url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js
 
 [mitm]
 hostname = otter-api.codefuture.top
@@ -20,7 +20,7 @@ hostname = otter-api.codefuture.top
 
 var chxm1023 = JSON.parse($response.body);
 
-chxm1023.data = {
+chxm1023。data = {
   ...chxm1023.data,
   "vipType" : "lifetime",
   "vipDeadline" : "2099-09-09T09:09:09.000Z",
