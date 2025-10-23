@@ -1,0 +1,28 @@
+#!name = Apple Intelligence 修复规则
+#!desc = 解决港版iPhone iOS 26.1 Beta 2～3 封禁 ChatGPT / Apple Intelligence 问题
+#!tag = AppleIntelligence
+#!author = ChangXiaoqiang
+#!date = 2025-10-22
+#!icon = https://github.com/ChangXaoqiang/lss_scripts/blob/main/icon/Apple_Intelligence.png?raw=true
+# 参考链接：https://raw.githubusercontent.com/kanaelovemoney/Apple-Intelligence/refs/heads/main/Apple-Intelligence
+
+[Rule]
+# ChatGPT / Apple Intelligence 相关域名走代理
+DOMAIN-SUFFIX,apple-relay.apple.com,Proxy
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com,Proxy
+DOMAIN-SUFFIX,apple-relay.cloudflare.com,Proxy
+DOMAIN-SUFFIX,gateway.icloud.com,Proxy
+DOMAIN-SUFFIX,guzzoni.apple.com,Proxy
+DOMAIN-SUFFIX,cp4.cloudflare.com,Proxy
+DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com,Proxy
+DOMAIN-SUFFIX,apps.mzstatic.com,Proxy
+
+# 可选：确保 Apple 智能请求不被误拦截
+DOMAIN-KEYWORD,apple-intelligence,Proxy
+
+[Rewrite]
+# 可选：如需强制启用 ChatGPT 扩展或中转流量，可加入下列规则（仅当系统 AI 功能异常时启用）
+^https?:\/\/(.*\.)?apple\.com\/(.*ai|chatgpt|intelligence).* header-add X-AI-Bypass true
+
+[MITM]
+hostname = *.apple.com, *.icloud.com, *.mzstatic.com, *.cloudflare.com, *.fastly-edge.com

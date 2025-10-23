@@ -1,0 +1,50 @@
+#!name = 菜鸟裹裹广告屏蔽
+#!desc = 全面屏蔽菜鸟裹裹App内各类广告，包括首页好物推荐、商品推广、底部标签页、快递详情页、问卷调查、主页图标、消息中心、发现页数字角标、裹裹券等广告内容，提升使用体验。
+#!tag = 广告净化
+#!author = ChangXiaoqiang
+#!date = 2025-6-27
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f2/2d/d9/f22dd9de-211d-34ae-60da-4af14105f7ad/AppIcon-0-1x_U007epad-0-1-0-85-220-0.png/492x0w.webp
+
+[Script]
+# 其他 - AMDC 移动调度
+http-response ^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/header.js
+
+# 首页 好物推荐,商品推广,底部标签页,快递详情页,问卷调查,主页图标 - 广告展示处理
+http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.m?show\.cn requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/cainiao/cainiao.js
+
+# 首页 - 空页面和协议主页处理
+http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(pickup\.empty\.page|protocol\.homepage)\.get\.cn requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/cainiao/cainiao.js
+
+# 消息中心 - 会话列表处理
+http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.conversation\.list\.cn requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/cainiao/cainiao.js
+
+[Rewrite]
+# 首页 - 广告关键词获取
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.adkeyword\.get\.cn reject-dict
+
+# 首页 - 社区站点查询
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.cncommunity\.my\.station\.query\.cn reject-dict
+
+# 首页 - 网络流量广告批量展示
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(batch\.show\.v2|index)\.cn reject-dict
+
+# 首页 - 小程序推荐CPC
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbopen\.miniapp\.recommend\.cpc\.cn reject-dict
+
+# 首页 - 问卷调查服务
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbmensa\.research\.researchservice\.(acquire|event|close)\.cn reject-dict
+
+# 首页 - 主页合并和标签栏营销
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(homepage\.merge|tabbar\.marketing)\.get\.cn reject-dict
+
+# 发现页 - 活动中心
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cnactivitycenter reject-dict
+
+# 发现页 - 信用市场活动命中
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cncreditmarket\.hit\.getactivityhit\.cn reject-dict
+
+# 发现页 - 龙泉页面资源内容
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.longquan\.place\.getpageresourcecontent\.cn reject-dict
+
+[MITM]
+hostname = cn-acs.m.cainiao.com, amdc.m.taobao.com

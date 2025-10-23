@@ -1,0 +1,15 @@
+#!name=iosapps
+#!desc=🎉 改善App Store下载速度。出自https://t.me/ibilibili/994
+#!category=通用增强
+#!icon=https://www.apple.com/v/app-store/c/images/overview/icon_appstore__ev0z770zyxoy_large_2x.png
+
+[General]
+use-local-host-item-for-proxy = true
+
+[Host]
+# 金山云CDN - CDN结果为本省
+iosapps.itunes.apple.com = iosapps.itunes.apple.com.download.ks-cdn.com
+# 网宿科技CDN - CDN结果为本省或隔壁省份
+iosapps.itunes.apple.com = hls.itunes.apple.com.mwcname.com
+# 阿里昆仑CDN - CDN结果天南地北比较离谱
+iosapps.itunes.apple.com = iosapps.itunes.apple.com.m.alikunlun.net

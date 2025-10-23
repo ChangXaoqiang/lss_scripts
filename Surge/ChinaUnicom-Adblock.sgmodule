@@ -1,0 +1,22 @@
+#!name=ChinaUnicom-Adblock
+#!desc=中国联通客户端去广告（开屏广告 / 主页推广 / 搜索框广告）
+#!author=chavyleung
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8a/67/ea/8a67ea45-3375-a7bf-3ee5-d17b5611b1c3/AppIcon-0-0-1x_U007epad-0-11-0-0-85-220.png/460x0w.webp
+#!category=广告净化
+#!date=2025-09-12
+
+
+[Rule]
+DOMAIN,m1.ad.10010.com,REJECT
+
+[Script]
+^https:\/\/m\.client\.10010\.com\/clientIndex\/v1\/api\/navHome requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-NavHome
+
+^https:\/\/m\.client\.10010\.com\/clientIndex\/homefusion\/fuInter requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-FuInter
+
+^https:\/\/m\.client\.10010\.com\/search_service\/tyfbSearch\/searchDiscoverListExpress requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-SearchDiscover
+
+^https:\/\/m\.client\.10010\.com\/search_service\/search\/searchScrollWord requires-body=1, script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom-adblock.js, tag=ChinaUnicom-SearchScroll
+
+[MITM]
+hostname = m.client.10010.com

@@ -1,0 +1,65 @@
+name: 流媒体服务可用性检查
+desc: 检查各种流媒体和AI服务的可用性状态，支持一键测试连通性
+icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
+tags: ["流媒体", "AI服务", "可用性检查"]
+
+tiles:
+  - name: ChatGPT-Web-Check
+    title: ChatGPT Web
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+    backgroundColor: "#74aa9c"
+    collapsed: true
+    url: https://chat.openai.com
+    interval: 600
+  - name: ChatGPT-App-Check
+    title: ChatGPT App
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+    backgroundColor: "#74aa9c"
+    collapsed: true
+    url: https://chatgpt.com
+    interval: 600
+  - name: YouTube-Check
+    title: YouTube
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    backgroundColor: "#ff0000"
+    collapsed: true
+    url: https://www.youtube.com
+    interval: 600
+  - name: Netflix-Check
+    title: Netflix
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+    backgroundColor: "#e50914"
+    collapsed: true
+    url: https://www.netflix.com
+    interval: 600
+
+
+script-providers:
+  ChatGPT-Web-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/chatgpt-web.js
+    interval: 86400
+  ChatGPT-App-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/chatgpt-app.js
+    interval: 86400
+  YouTube-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/youtube.js
+    interval: 86400
+  Netflix-Check:
+    url: https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/netflix.js
+    interval: 86400
+
+# 使用说明：
+# 1. 此配置文件用于在Stash仪表盘创建可折叠的服务可用性检查磁贴
+# 2. 每个磁贴会显示对应服务的连通状态
+# 3. 点击磁贴可手动触发检查
+# 4. 如需添加更多服务，请参照现有格式添加tiles和script-providers配置
+# 5. 支持的服务：
+#    - ChatGPT Web和App访问检测
+#    - YouTube Premium解锁检测
+#    - Netflix解锁检测（区分完整解锁和自制剧解锁）
+# 6. 检测结果说明：
+#    - 已解锁/支持访问：显示"已解锁 ➟ 地区代码"或"支持访问 ✓"
+#    - 未解锁/不支持：显示"未支持 🚫"或"该节点不支持解锁"
+#    - 检测失败：显示"检测失败，请重试"
+#    - 检测超时：显示"检测超时 🚦"
+# 7. 自动检测间隔为600秒(10分钟)，脚本更新间隔为86400秒(24小时)

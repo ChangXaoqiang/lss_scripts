@@ -1,0 +1,35 @@
+#!name = 脉脉广告屏蔽
+#!desc = 全面屏蔽脉脉App内各类广告，包括开屏广告、信息流广告、评论区广告、推广卡片等，提升使用体验。适配最新版本脉脉客户端，持续更新维护。
+#!tag = 广告净化
+#!author = fmz200
+#!date = 2025-6-26
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ae/eb/4b/aeeb4b73-53f9-0662-5e1a-b7d0a4fab33d/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/434x0w.webp
+
+[Rewrite]
+# 1.屏蔽开屏广告、职位页面横幅广告
+^https:\/\/(h3\.)?open\.taou\.com\/maimai\/adshow\? reject
+# 描述：屏蔽App启动时的全屏广告和职位详情页的横幅广告
+
+# 2.屏蔽赠送礼物横幅广告
+^https:\/\/(h3\.)?open\.taou\.com\/maimai\/pay\/v5\/check_gift\? reject
+# 描述：移除支付/礼物页面顶部的促销横幅
+
+# 3.屏蔽帖子文末推广卡片
+^https:\/\/(h3\.)?open\.taou\.com\/maimai\/go_gossip_darwin\/external\/v2\/query_flow_cards\? reject
+# 描述：移除帖子详情页底部的"你可能还喜欢"等推广卡片
+
+[Script]
+# 4.屏蔽帖子末尾"看过此贴的用户也在看"推荐
+http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/maimai/maimai_ads.js
+# 描述：通过脚本处理帖子底部的相关推荐信息流
+
+# 5.屏蔽信息流和评论区广告
+http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/maimai/maimai_ads.js
+# 描述：处理以下广告：
+#   - 信息流中的推广内容(focus_feed)
+#   - 帖子详情页评论区广告(gossip_detail_comment)
+#   - 动态详情页评论区广告(feed_detail_comment)
+
+[MITM]
+hostname = open.taou.com, h3.open.taou.com
+# 描述：需要中间人攻击(MITM)解密的主域名

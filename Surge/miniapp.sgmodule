@@ -5,7 +5,7 @@
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/WeChat.png
 #!category=广告净化
 #!author=ChangXiaoqiang
-#!date=2025-05-10
+#!date=2025-07-22
 
 # 说明：本模块用于拦截微信小程序中的各类广告，提升使用体验
 # 包括开屏广告、弹窗广告、横幅广告、信息流广告等
@@ -118,5 +118,9 @@ iosapps.itunes.apple.com = iosapps.itunes.apple.com.download.ks-cdn.com
 ^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/banner - reject-dict
 ^https:\/\/3pp\.starbucks\.com\.cn\/wxmem\/index\/global - reject-dict
 
+# > 闪送
+^https:\/\/miniprogram\.ishansong\.com\/cms\/faq\/query reject-dict
+^https:\/\/ads\.ishansong\.com\/advert reject-dict
+
 [MITM]
-hostname = %APPEND% bi-mall.meituan.com, h5.baike.qq.com, kr.ele.me, wechat.xcx1.ctpark.cn, gos-static.yqslmall.com, static.wecity.qq.com, v.tuhu.org, ucmp-static.sf-express.com, web.chelaile.net.cn, api.chelaile.net.cn, atrace.chelaile.net.cn, wxsnsdythumb.wxs.qq.com, resource.wesure100.com, inf-prdapi.wesure.cn, vectorsdk.map.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, qnimg.zowoyoo.com, ump.ems.com.cn, wxa.wxs.qq.com, sdk.e.qq.com, yun-hl.3g.qq.com, ipv4.gdt.qq.com, pgdt.gtimg.cn, mp.weixin.qq.com, mini.ems.com.cn, card.wecity.qq.com, yxyylog.echargenet.com, cdn-evone-oss.echargenet.com, ms.jr.jd.com, api.m.jd.com, conf.diditaxi.com.cn, ma-adx.ctrip.com, m.ctrip.com, mbd.baidu.com, api.hellobike.com, m5.amap.com, res.pizzahut.com.cn, orders.kfc.com.cn, dynamicad.kfc.com.cn, res.kfc.com.cn, api.mcd.cn, 3pp.starbucks.com.cn
+hostname = %APPEND% miniprogram.ishansong.com, ads.ishansong.com, bi-mall.meituan.com, h5.baike.qq.com, kr.ele.me, wechat.xcx1.ctpark.cn, gos-static.yqslmall.com, static.wecity.qq.com, v.tuhu.org, ucmp-static.sf-express.com, web.chelaile.net.cn, api.chelaile.net.cn, atrace.chelaile.net.cn, wxsnsdythumb.wxs.qq.com, resource.wesure100.com, inf-prdapi.wesure.cn, vectorsdk.map.qq.com, ct-bucket.oss-cn-shenzhen.aliyuncs.com, qnimg.zowoyoo.com, ump.ems.com.cn, wxa.wxs.qq.com, sdk.e.qq.com, yun-hl.3g.qq.com, ipv4.gdt.qq.com, pgdt.gtimg.cn, mp.weixin.qq.com, mini.ems.com.cn, card.wecity.qq.com, yxyylog.echargenet.com, cdn-evone-oss.echargenet.com, ms.jr.jd.com, api.m.jd.com, conf.diditaxi.com.cn, ma-adx.ctrip.com, m.ctrip.com, mbd.baidu.com, api.hellobike.com, m5.amap.com, res.pizzahut.com.cn, orders.kfc.com.cn, dynamicad.kfc.com.cn, res.kfc.com.cn, api.mcd.cn, 3pp.starbucks.com.cn

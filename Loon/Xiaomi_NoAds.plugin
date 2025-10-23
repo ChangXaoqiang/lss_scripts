@@ -1,0 +1,38 @@
+#!name = 小米系列广告屏蔽
+#!desc = 全面屏蔽小米商城、小米有品、小米运动、小米打印、小米金融、小爱音箱、米家等小米系列应用的各类广告，包括开屏广告、横幅广告、推荐内容、弹窗广告等，提升使用体验。
+#!tag = 广告净化
+#!author = fmz200
+#!date = 2025-6-27
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/47/83/a3/4783a3f7-7ef2-ac13-794d-a57c7964ca0f/AppIcon-1x_U007emarketing-0-6-0-0-85-220-0.png/246x0w.webp
+
+[Script]
+# 小米商城 - 启动页广告处理
+http-response ^https?:\/\/api\.m\.mi\.com\/v1\/app\/start requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/myBlockAds.js
+
+[Rewrite]
+# 小米有品 - 首页配置广告
+^https?:\/\/shopapi\.io\.mi\.com\/mtop\/mf\/resource\/homePage\/pageConfig reject-200
+
+# 小米运动 - 发现页广告
+^https?:\/\/api-mifit.+?\.huami\.com\/discovery\/mi\/discovery\/.+?_ad\? reject-200
+
+# 小米打印 - 开屏广告（感谢【别怕我又不乱来】分享）
+^https?:\/\/api-miprint\.hannto\.com\/v1\/c\/res\/app\/ad\/\?app_version reject-dict
+
+# 小米打印 - 主页上方广告
+^https?:\/\/api\.indeedpower\.com\/v1\/m\/edu\/module\/homepage_banner\/\?randomStr reject-dict
+
+# 小米金融 - 广告和播放屏
+^https?:\/\/api\.jr\.mi\.com\/v\d\/adv\/ reject-200
+^https?:\/\/api\.jr\.mi\.com\/jr\/api\/playScreen reject-200
+
+# 小爱音箱 - 广告和付费引导
+^https?:\/\/(info\.mina\.xiaoaisound|marketing-aibox\.v\.mitvos)\.com\/advertise(?!\/banner) reject
+^https?:\/\/(info\.mina\.xiaoaisound|marketing-aibox\.v\.mitvos)\.com\/payGuide\/userCenter reject
+^https?:\/\/(info\.mina\.xiaoaisound|marketing-aibox\.v\.mitvos)\.com\/popup reject-dict
+
+# 米家 - 推荐和横幅广告
+^https?:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(banner|carousel\/banners|myTab|openingBanner) reject-dict
+
+[MITM]
+hostname = api.m.mi.com, shopapi.io.mi.com, api-mifit*.huami.com, api-miprint.hannto.com, api.indeedpower.com, api.jr.mi.com, info.mina.xiaoaisound.com, marketing-aibox.v.mitvos.com, home.mi.com

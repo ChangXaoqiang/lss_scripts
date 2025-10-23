@@ -1,0 +1,89 @@
+#!name = 百度系列广告屏蔽
+#!desc = 全面屏蔽百度地图、百度输入法、百度网盘、百度贴吧、百度翻译、百度文库等百度系列应用的各类广告，包括开屏广告、信息流广告、横幅广告、推广内容等，提升使用体验。
+#!tag = 广告净化
+#!author = ChangXiaoqiang
+#!date = 2025-6-27
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/73/4e/76/734e76f0-58f6-d218-6493-0c277b4f3ce0/AppIcon-0-0-1x_U007emarketing-0-8-0-0-sRGB-85-220.png/246x0w.webp
+
+[Script]
+# 百度地图 - 广告处理
+http-response ^https?:\/\/newclient\.map\.baidu\.com\/client\/phpui2\/\?qt=ads requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/baidumap.js
+
+# 百度贴吧 - JSON格式广告处理
+http-response ^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)$|tiebaads\/commonbatch|c\/s\/sync$) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-json.js
+
+# 百度贴吧 - Proto格式广告处理
+http-response ^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)\?cmd requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-proto.js
+
+[Rewrite]
+# 百度地图 - 静态资源广告
+^https?:\/\/dss0\.bdstatic\.com\/-0U0bnSm1A5BphGlnYG\/ reject-200
+^https?:\/\/dss0\.bdstatic\.com\/.+/tam-ogel\/.+\.(jpg|mp4) reject
+^https?:\/\/tb1\.bdstatic\.com\/tb\/cms\/ngmis\/adsense\/*.jpg reject
+^https?:\/\/tb2\.bdstatic\.com\/tb\/mobile\/spb\/widget\/jump reject-img
+^https?:\/\/ss0\.bdstatic\.com/.+?_\d{3}_\d{4}\.jpg reject-200
+^https?:\/\/gss0\.bdstatic\.com\/.+?\/static\/wiseindex\/img\/bd_red_packet\.png reject-img
+
+# 百度输入法 - 广告文件
+^https?:\/\/r6\.mo\.baidu\.com\/res\/file/advertisement\/files\/.+\.jpg reject
+^https?:\/\/res\.mi\.baidu\.com\/imeres\/ime-res\/advertisement\/files\/.+\.jpg reject
+^https?:\/\/mime\.baidu\.com\/v5\/activity\/advertisementnonrealtime reject
+^https?:\/\/mime\.baidu\.com\/v5\/start_screen_ads\/list reject
+^https?:\/\/mime\.baidu\.com\/v5\/hotpatch\/check\?hotpatch reject
+
+# 百度输入法 - 开屏和推荐内容
+^https?:\/\/mime\.baidu\.com\/v5\/start_screen_ads/list reject-dict
+^https?:\/\/mime\.baidu\.com\/sapi\/v1\/lccorpus\/(applist|pannellist) reject-dict
+^https?:\/\/mime\.baidu\.com\/sapi\/v1\/circle\/joinedlist reject-dict
+^https?:\/\/mime\.baidu\.com\/commer\/pocket_api\/enterprise_list reject-dict
+^https?:\/\/mbd\.baidu\.com\/ccs\/v1\/start\/confsync\?appname=baidu_input reject-dict
+
+# 百度网盘 - 广告和活动
+^https?:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/adx reject
+^https?:\/\/pan\.baidu\.com\/rest\/2\.0\/pcs\/ad reject
+^https?:\/\/pan\.baidu\.com\/act\/v\d\/(bchannel|welfare)\/list reject
+^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry reject
+^https?:\/\/pan\.baidu\.com\/pmall\/order\/privilege\/info reject
+^https?:\/\/pan\.baidu\.com\/rest\/.+\/pcs\/adx reject
+^https?:\/\/pan\.baidu\.com\/api\/useractivity\/activity reject
+^https?:\/\/pan\.baidu\.com\/act\/.+\/bchannel\/list reject
+^https?:\/\/pan\.baidu\.com\/api\/certuser\/get reject
+^https?:\/\/pan\.baidu\.com\/component\/view\/(1510|1130)\?vip reject
+
+# 百度网盘 - 静态资源
+^https?:\/\/ndstatic\.cdn\.bcebos\.com\/activity\/welfare\/js\/.+\.js reject
+^https?:\/\/ndstatic\.cdn\.bcebos\.com\/activity\/welfare\/index\.html reject
+^https?:\/\/staticsns\.cdn\.bcebos\.com\/amis\/.+/banner.png reject
+^https?:\/\/issuecdn\.baidupcs\.com\/issue\/netdisk\/guanggao reject
+^https?:\/\/update\.pan\.baidu\.com\/statistics reject
+^https?:\/\/fc-video\.cdn\.bcebos\.com reject
+^https?:\/\/rp\.hpplay\.cn\/logouts reject
+
+# 百度翻译 - 启动广告
+^https?:\/\/mime\.baidu\.com\/v\d\/IosStart\/getStartInfo reject
+^https?:\/\/mime\.baidu\.com\/v\d\/activity\/advertisement reject
+
+# 百度文库 - 广告接口
+^https?:\/\/appwk\.baidu\.com\/xpage\/interface\/wknaad reject-200
+
+# 百度通用 - 广告和统计
+^https?:\/\/fcvbjbcebos\.baidu\.com\/.+.mp4 reject
+^https?:\/\/fcvbjbcebos\.baidu\.com\/.+?\.mp4 reject-img
+^https?:\/\/cover\.baidu\.com\/cover\/page\/dspSwitchAds\/ reject
+^https?:\/\/baichuan\.baidu\.com\/rs\/adpmobile\/launch reject
+^https?:\/\/baichuan\.baidu\.com\/rs\/adpmobile\/launch reject-img
+^https?:\/\/api\d\.tuisong\.baidu\.com reject-img
+^https?:\/\/afd\.baidu\.com\/afd\/entry reject
+^https?:\/\/afd\.baidu\.com\/afd\/entry reject-img
+^https?:\/\/als\.baidu\.com\/clog\/clog reject
+^https?:\/\/mobads\.baidu\.com\/cpro\/ui\/mads.+ reject
+^https?:\/\/issuecdn\.baidupcs\.com\/issue\/netdisk\/guanggao\/ reject-200
+^https?:\/\/[\s\S]*\.baidu\.com/.*?ad[xs]\.php reject-img
+^https?:\/\/t\d{2}\.baidu\.com reject-img
+^https?:\/\/update\.pan\.baidu\.com\/statistics reject
+^https?:\/\/log.+?baidu\.com reject
+^https?:\/\/sa\d\.tuisong\.baidu\.com reject-img
+^https?:\/\/www.baidu.com\/\?action=static&ms=1&version=css_page_2@0.*? reject
+
+[MITM]
+hostname = dss0.bdstatic.com, tb1.bdstatic.com, tb2.bdstatic.com, ss0.bdstatic.com, gss0.bdstatic.com, newclient.map.baidu.com, r6.mo.baidu.com, res.mi.baidu.com, mime.baidu.com, mbd.baidu.com, pan.baidu.com, ndstatic.cdn.bcebos.com, staticsns.cdn.bcebos.com, issuecdn.baidupcs.com, update.pan.baidu.com, fc-video.cdn.bcebos.com, rp.hpplay.cn, tiebac.baidu.com, *.tieba.baidu.com, appwk.baidu.com, www.baidu.com, fcvbjbcebos.baidu.com, cover.baidu.com, baichuan.baidu.com, api*.tuisong.baidu.com, afd.baidu.com, mobads.baidu.com, sa*.tuisong.baidu.com, m.baidu.com, sofire.baidu.com
