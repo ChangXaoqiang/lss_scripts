@@ -1,30 +1,28 @@
-/*************************************
+// otterlife.js — OtterLife VIP unlock (robust)
+try {
+  if (typeof $response === "undefined" || !$response || !$response.body) {
+    $done({});
+  } else {
+    let bodyText = $response.body;
+    // 有的响应可能已经是对象（部分环境），先处理字符串
+    let dataObj = typeof bodyText === "string" ? JSON.parse(bodyText) : bodyText;
 
-项目名称：OtterLife
-下载地址：https://t.cn/A68TbbDM
-更新日期：2024-08-06
-脚本作者：chxm1023
-电报频道：https://t.me/chxm1023
-使用声明：⚠️仅供参考，🈲转载与售卖！
+    // 如果没有 data 字段就创建一个
+    if (!dataObj) dataObj = {};
+    if (typeof dataObj !== "object") dataObj = {};
 
-**************************************
+    // 合并并覆盖 VIP 字段
+    dataObj.data = {
+      ...(dataObj.data || {}),
+      vipType: "lifetime",
+      vipDeadline: "2099-09-09T09:09:09.000Z",
+      isVip: true
+    };
 
-[rewrite_local]
-^https?:\/\/otter-api\.codefuture\.top\/v\d\/user\/current url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js
-
-[mitm]
-hostname = otter-api.codefuture.top
-
-*************************************/
-
-
-var chxm1023 = JSON.parse($response.body);
-
-chxm1023。data = {
-  ...chxm1023.data,
-  "vipType" : "lifetime",
-  "vipDeadline" : "2099-09-09T09:09:09.000Z",
-  "isVip" : true
-};
-
-$done({body : JSON.stringify(chxm1023)});
+    $done({ body: JSON.stringify(dataObj) });
+  }
+} catch (e) {
+  // 出错时不要阻断原始响应，方便排查
+  // 在 Loon 的脚本日志里能看到异常信息（如果支持）
+  $done({});
+}
