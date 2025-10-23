@@ -7,7 +7,7 @@
 
 [Script]
 # OtterLife 永久 VIP 解锁
-^https?:\/\/otter-api\.codefuture\.top\/v\d+\/user\/current script-response-body script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js
+^https?:\/\/otter-api\.codefuture\.top\/v\d+\/user\/current script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js, requires-body=true, timeout=10
 
 [Mitm]
 hostname = otter-api.codefuture.top
