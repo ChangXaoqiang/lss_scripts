@@ -1,0 +1,25 @@
+#!name = Apple GeoServices 修正
+#!desc = 避免 Apple 定位、天气、外观时间受 VPN 节点影响
+#!author = ChangXiaoqiang
+#!date = 2025-10-23
+#!tag = 系统修复
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/52/d2/2652d2b0-6816-1a35-ac4c-9207593a9acf/weather-0-0-1x_U007epad-0-1-0-85-220.png/434x0w.webp
+
+[Rule]
+DOMAIN,gs.apple.com,DIRECT
+DOMAIN,gsp-ssl.ls.apple.com,DIRECT
+DOMAIN,time.apple.com,DIRECT
+DOMAIN,weather-data.apple.com,DIRECT
+DOMAIN,api.weather.apple.com,DIRECT
+DOMAIN,configuration.apple.com,DIRECT
+DOMAIN,configuration.ls.apple.com,DIRECT
+DOMAIN,init.itunes.apple.com,DIRECT
+DOMAIN,mesu.apple.com,DIRECT
+DOMAIN,cdn-ls.apple.com,DIRECT
+DOMAIN,cdn-apple.com,DIRECT
+DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
+DOMAIN-SUFFIX,apple.com,DIRECT
+
+[Script]
+# 可选：在插件加载时输出提示日志（非必须）
+http-request ^https?:\/\/gs\.apple\.com script-path=apple_geo_fix.js tag=AppleGeoFix
