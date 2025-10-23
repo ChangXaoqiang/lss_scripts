@@ -1,49 +1,44 @@
 #!name = Apple GeoServices 修正
-#!desc = 修复 Apple 定位、天气与系统外观时间受 VPN 影响的问题
+#!desc = 修复 iPhone 外观切换因 VPN 节点误判日出日落时间的问题
 #!author = ChangXiaoqiang
-#!date = 2025-10-23 23:42
+#!date = 2025-10-23
 #!tag = 系统修复
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/52/d2/2652d2b0-6816-1a35-ac4c-9207593a9acf/weather-0-0-1x_U007epad-0-1-0-85-220.png/434x0w.webp
 
 [Rule]
-# --- Apple GeoServices & WeatherKit 域名直连 ---
+# 关键地理时间服务：全部直连，避免被 VPN 节点误导
 DOMAIN,gs.apple.com,DIRECT
-DOMAIN,gsp-ssl.ls.apple.com,DIRECT
-DOMAIN,geo.apple.com,DIRECT
-DOMAIN,gs-loc.apple.com,DIRECT
 DOMAIN,configuration.apple.com,DIRECT
 DOMAIN,configuration.ls.apple.com,DIRECT
+DOMAIN,gsp-ssl.ls.apple.com,DIRECT
 DOMAIN,time.apple.com,DIRECT
 DOMAIN,weather-data.apple.com,DIRECT
 DOMAIN,api.weather.apple.com,DIRECT
+DOMAIN,api.weatherkit.apple.com,DIRECT
+DOMAIN,cdn-ls.apple.com,DIRECT
+DOMAIN,cdn.apple-mapkit.com,DIRECT
 DOMAIN,init.itunes.apple.com,DIRECT
 DOMAIN,mesu.apple.com,DIRECT
-DOMAIN,cdn-ls.apple.com,DIRECT
-DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
-DOMAIN-SUFFIX,apple.com,DIRECT
 
-# --- DNS 修复关键 ---
+DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 DOMAIN-SUFFIX,ls.apple.com,DIRECT
-DOMAIN-SUFFIX,gsp-ssl.apple.com,DIRECT
 DOMAIN-SUFFIX,geo.apple.com,DIRECT
 
 [Host]
-# --- 指定系统关键域名强制使用系统 DNS ---
+# 指定部分关键域名使用系统 DNS（非代理）
 gs.apple.com = system
 gsp-ssl.ls.apple.com = system
 weather-data.apple.com = system
 api.weather.apple.com = system
 time.apple.com = system
+configuration.ls.apple.com = system
 
 [DNS]
-# --- DNS 配置优化 ---
+# 开启系统 DNS 参与解析，确保地理服务走本地出口
 no-system = false
 enhanced-mode = fake-ip
-skip-proxy-domains = gs.apple.com,gsp-ssl.ls.apple.com,geo.apple.com,weather-data.apple.com,api.weather.apple.com,time.apple.com
-
-[MITM]
-hostname = gs.apple.com,geo.apple.com,gsp-ssl.ls.apple.com,configuration.apple.com,weather-data.apple.com
+skip-proxy-domains = gs.apple.com, gsp-ssl.ls.apple.com, weather-data.apple.com, api.weather.apple.com, time.apple.com, configuration.ls.apple.com
 
 [Script]
-# --- HTTP 请求日志监控 ---
-http-request ^https?:\/\/(gs|geo|gsp-ssl\.ls|configuration|weather-data)\.apple\.com script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/apple_geo_fix.js, tag=AppleGeoFix, timeout=10
+# 可选日志：用于确认 Apple GeoServices 是否正确直连
+http-request ^https?:\/\/(gs|geo|gsp-ssl\.ls|configuration|time|weather-data)\.apple\.com script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/apple_geo_log.js, tag=AppleGeoCheck, timeout=10
