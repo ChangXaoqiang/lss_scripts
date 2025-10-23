@@ -1,8 +1,7 @@
 #!name = Apple_Geo
 #!desc = Apple 地理与时间服务直连，保证日出日落和系统服务走本地 IP
 #!author = ChangXiaoqiang
-#!date = 2025-10-24
-#!icon = https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg
+#!date = 2025-10-24 01:02
 
 # ==========================
 # 核心目标
@@ -26,6 +25,7 @@ DOMAIN, humb.apple.com
 DOMAIN, static.ips.apple.com
 DOMAIN, sq-device.apple.com
 DOMAIN, tbsc.apple.com
+DOMAIN, gspe1-ssl.ls.apple.com
 
 # Apple ID 与 iCloud 关键服务 (直连可避免因 VPN 影响)
 DOMAIN, account.apple.com
