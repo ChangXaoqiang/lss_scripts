@@ -1,44 +1,16 @@
-#!name = Apple GeoServices 修正
-#!desc = 修复 iPhone 外观切换因 VPN 节点误判日出日落时间的问题
+#!name = Apple Geo Fake IP
+#!desc = 使用 Fake IP 让 Apple 服务走本地，修复 iPhone 外观切换因 VPN 节点误判日出日落时间的问题
 #!author = ChangXiaoqiang
-#!date = 2025-10-24 00:06
-#!tag = 系统修复
+#!date = 2025-10-24
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/52/d2/2652d2b0-6816-1a35-ac4c-9207593a9acf/weather-0-0-1x_U007epad-0-1-0-85-220.png/434x0w.webp
-
-[Rule]
-# 关键地理时间服务：全部直连，避免被 VPN 节点误导
-DOMAIN,gs.apple.com,DIRECT
-DOMAIN,configuration.apple.com,DIRECT
-DOMAIN,configuration.ls.apple.com,DIRECT
-DOMAIN,gsp-ssl.ls.apple.com,DIRECT
-DOMAIN,time.apple.com,DIRECT
-DOMAIN,weather-data.apple.com,DIRECT
-DOMAIN,api.weather.apple.com,DIRECT
-DOMAIN,api.weatherkit.apple.com,DIRECT
-DOMAIN,cdn-ls.apple.com,DIRECT
-DOMAIN,cdn.apple-mapkit.com,DIRECT
-DOMAIN,init.itunes.apple.com,DIRECT
-DOMAIN,mesu.apple.com,DIRECT
-
-DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
-DOMAIN-SUFFIX,ls.apple.com,DIRECT
-DOMAIN-SUFFIX,geo.apple.com,DIRECT
-
-[Host]
-# 指定部分关键域名使用系统 DNS（非代理）
-gs.apple.com = system
-gsp-ssl.ls.apple.com = system
-weather-data.apple.com = system
-api.weather.apple.com = system
-time.apple.com = system
-configuration.ls.apple.com = system
-
-[DNS]
-# 开启系统 DNS 参与解析，确保地理服务走本地出口
-no-system = false
-enhanced-mode = fake-ip
-skip-proxy-domains = gs.apple.com, gsp-ssl.ls.apple.com, weather-data.apple.com, api.weather.apple.com, time.apple.com, configuration.ls.apple.com
+#!tag = 系统修复
 
 [Script]
-# 可选日志：确认 GeoServices 请求是否直连
-AppleGeoCheck = type=http-request,pattern=^https?:\/\/(gs|geo|gsp-ssl\.ls|configuration|time|weather-data)\.apple\.com,requires-body=false,max-size=0,script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/apple_geo_log.js
+# Apple 关键服务走 Fake IP
+DOMAIN-SUFFIX,time.apple.com,198.18.0.73
+DOMAIN-SUFFIX,featureassets.org,198.18.1.16
+DOMAIN-SUFFIX,api.apple-cloudkit.com,198.18.0.78
+DOMAIN-SUFFIX,metrics.apple.com,198.18.0.11
+DOMAIN-SUFFIX,geo.apple.com,198.18.0.12
+DOMAIN-SUFFIX,configuration.apple.com,198.18.0.13
+
