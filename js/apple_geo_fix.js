@@ -1,61 +1,40 @@
-/**
- * Apple GeoServices 修正脚本
- * 解决 VPN 使用导致 Apple 地理服务（GeoServices、Weather、Night Shift、系统主题切换等）
- * 被错误识别为节点所在国家/地区的问题。
- *
- * Author: ChangXiaoqiang
- * Updated: 2025-10-23
+/*
+ * Apple Geo Fix for Loon
+ * 解决 Apple 日出日落 / 时区偏移问题
+ * 原理：让 iOS 定位相关域名跳过 FakeIP，并强制直连
+ * 作者：ChangXiaoqiang (ChatGPT协助)
  */
 
-const CN_IPS = ["10.", "172.", "192.168.", "100.64.", "127."];
-const LOCAL_REGIONS = ["CN", "HK", "MO", "TW"];
+const REAL_DNS_DOMAINS = [
+  "gs.apple.com",
+  "gsp-ssl.ls.apple.com",
+  "smp-device-content.apple.com",
+  "configuration.apple.com",
+  "bag.itunes.apple.com",
+  "time-ios.apple.com",
+  "time.apple.com",
+  "pool.ntp.org",
+  "ocsp.apple.com",
+  "ocsp2.apple.com",
+  "geolocation.onetrust.com",
+  "api.apple-cloudkit.com",
+  "weather-data.apple.com",
+  "api.weather.com",
+  "cdn.weather.com"
+];
 
-/**
- * 判断当前请求是否属于 Apple GeoServices
- */
-function isGeoServices(reqUrl) {
-  const targets = [
-    "gs.apple.com",
-    "gsp-ssl.ls.apple.com",
-    "geo.apple.com",
-    "configuration.apple.com",
-    "weather-data.apple.com",
-    "init.itunes.apple.com"
-  ];
-  return targets.some(domain => reqUrl.includes(domain));
-}
+if ($domain) {
+  if (REAL_DNS_DOMAINS.some(d => $domain.endsWith(d))) {
+    // 强制跳过 FakeIP
+    $fakeDNS = false;
 
-/**
- * 伪造或固定地理位置区域为中国大陆
- */
-function fixGeoResponse(body) {
-  try {
-    const json = JSON.parse(body);
-    if (json && json.countryCode && !LOCAL_REGIONS.includes(json.countryCode)) {
-      json.countryCode = "CN";
-      json.timeZone = "Asia/Shanghai";
-      json.locale = "zh_CN";
-    }
-    return JSON.stringify(json);
-  } catch {
-    return body;
+    // 强制直连
+    $policy = "DIRECT";
+
+    $done({ matched: true, policy: $policy });
+  } else {
+    $done({ matched: false });
   }
-}
-
-/**
- * 主执行逻辑
- */
-if ($request) {
-  if (isGeoServices($request.url)) {
-    console.log("[AppleGeoFix] 捕获到 Apple GeoServices 请求:", $request.url);
-  }
-  $done({});
-}
-
-if ($response && isGeoServices($request.url)) {
-  const fixed = fixGeoResponse($response.body);
-  console.log("[AppleGeoFix] 已修正地理位置返回数据");
-  $done({ body: fixed });
 } else {
   $done({});
 }
