@@ -1,0 +1,11 @@
+#!name=OtterLife_解锁
+#!desc=劫持返回，注入 OtterLife 终身 VIP 字段
+#!category=解锁会员
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/30/7c/48/307c48c7-6421-bd2b-e30a-a8d80daed35f/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/246x0w.png
+#!date=2025-10-23
+
+[Script]
+OtterLife = type=http-response,pattern=^https?:\/\/otter-api\.codefuture\.top\/v\d+\/user\/current$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js
+
+[MITM]
+hostname= %APPEND% otter-api.codefuture.top
