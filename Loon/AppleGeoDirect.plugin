@@ -1,7 +1,7 @@
 #!name = Apple GeoServices 修正
 #!desc = 修正 Apple 定位、天气与系统外观时间受 VPN 影响的问题
 #!author = ChangXiaoqiang
-#!date = 2025-10-23
+#!date = 2025-10-23 23:26
 #!tag = 系统修复
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/52/d2/2652d2b0-6816-1a35-ac4c-9207593a9acf/weather-0-0-1x_U007epad-0-1-0-85-220.png/434x0w.webp
 
@@ -43,4 +43,5 @@ skip-proxy-domains = gs.apple.com, gsp-ssl.ls.apple.com, weather-data.apple.com,
 
 [Script]
 # 可选日志输出，帮助确认插件是否生效
-http-request ^https?:\/\/gs\.apple\.com script-path=apple_geo_fix.js tag=AppleGeoFix
+http-request ^https?:\/\/(gs|gs-loc|geo|configuration|gsp-ssl\.ls)\.apple\.com script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/apple_geo_fix.js, tag=AppleGeoFix, timeout=10
+
