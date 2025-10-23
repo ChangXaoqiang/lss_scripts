@@ -1,7 +1,7 @@
 #!name = Apple Geo Fix
 #!desc = 确保 iPhone 日出日落和 Apple 服务走本地 IP，不受 VPN/代理影响
 #!author = ChangXiaoqiang
-#!date = 2025-10-24
+#!date = 2025-10-24 00:40
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/52/d2/2652d2b0-6816-1a35-ac4c-9207593a9acf/weather-0-0-1x_U007epad-0-1-0-85-220.png/434x0w.webp
 #!tag = 系统修复
 
