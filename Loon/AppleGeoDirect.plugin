@@ -1,7 +1,7 @@
 #!name = Apple GeoServices 修正
 #!desc = 修复 iPhone 外观切换因 VPN 节点误判日出日落时间的问题
 #!author = ChangXiaoqiang
-#!date = 2025-10-23
+#!date = 2025-10-24 00:00
 #!tag = 系统修复
 #!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/52/d2/2652d2b0-6816-1a35-ac4c-9207593a9acf/weather-0-0-1x_U007epad-0-1-0-85-220.png/434x0w.webp
 
