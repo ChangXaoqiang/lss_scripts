@@ -1,59 +1,61 @@
 /**
  * Apple GeoServices 修正脚本
- * 解决 VPN 使用时 Apple 系统根据节点 IP 误判地理位置问题
- * 作者: ChangXiaoqiang
- * 日期: 2025-10-23
+ * 解决 VPN 使用导致 Apple 地理服务（GeoServices、Weather、Night Shift、系统主题切换等）
+ * 被错误识别为节点所在国家/地区的问题。
+ *
+ * Author: ChangXiaoqiang
+ * Updated: 2025-10-23
  */
 
-const LOCAL_IP_API = "http://ip-api.com/json/?fields=status,country,regionName,city,lat,lon,query";
-const APPLE_GEO_HOSTS = [
-  "gs-loc.apple.com",
-  "geo.apple.com",
-  "configuration.apple.com",
-  "gsp-ssl.ls.apple.com"
-];
+const CN_IPS = ["10.", "172.", "192.168.", "100.64.", "127."];
+const LOCAL_REGIONS = ["CN", "HK", "MO", "TW"];
 
-(async () => {
-  let url = $request.url;
-  let hostname = $request.hostname;
-  if (!hostname) hostname = url.match(/https?:\/\/([^/]+)/)?.[1];
+/**
+ * 判断当前请求是否属于 Apple GeoServices
+ */
+function isGeoServices(reqUrl) {
+  const targets = [
+    "gs.apple.com",
+    "gsp-ssl.ls.apple.com",
+    "geo.apple.com",
+    "configuration.apple.com",
+    "weather-data.apple.com",
+    "init.itunes.apple.com"
+  ];
+  return targets.some(domain => reqUrl.includes(domain));
+}
 
-  // 判断是否为 Apple 地理服务请求
-  if (!APPLE_GEO_HOSTS.some(h => hostname.includes(h))) {
-    $done({});
-    return;
-  }
-
+/**
+ * 伪造或固定地理位置区域为中国大陆
+ */
+function fixGeoResponse(body) {
   try {
-    // 获取设备真实地理位置（基于出口 IP）
-    const res = await new Promise((resolve, reject) => {
-      $httpClient.get(LOCAL_IP_API, (error, response, data) => {
-        if (error) reject(error);
-        else resolve(JSON.parse(data));
-      });
-    });
-
-    if (res?.status === "success") {
-      const fixedResponse = {
-        location: {
-          lat: res.lat,
-          lng: res.lon
-        },
-        country: res.country,
-        region: res.regionName,
-        city: res.city,
-        ip: res.query
-      };
-
-      console.log(`[Apple Geo Fix] ✅ 使用真实位置: ${res.city} (${res.lat}, ${res.lon})`);
-      $done({ response: { status: 200, body: JSON.stringify(fixedResponse) } });
-    } else {
-      console.log("[Apple Geo Fix] ⚠️ 获取地理信息失败，返回原始结果");
-      $done({});
+    const json = JSON.parse(body);
+    if (json && json.countryCode && !LOCAL_REGIONS.includes(json.countryCode)) {
+      json.countryCode = "CN";
+      json.timeZone = "Asia/Shanghai";
+      json.locale = "zh_CN";
     }
-
-  } catch (e) {
-    console.log("[Apple Geo Fix] ❌ 错误: " + e);
-    $done({});
+    return JSON.stringify(json);
+  } catch {
+    return body;
   }
-})();
+}
+
+/**
+ * 主执行逻辑
+ */
+if ($request) {
+  if (isGeoServices($request.url)) {
+    console.log("[AppleGeoFix] 捕获到 Apple GeoServices 请求:", $request.url);
+  }
+  $done({});
+}
+
+if ($response && isGeoServices($request.url)) {
+  const fixed = fixGeoResponse($response.body);
+  console.log("[AppleGeoFix] 已修正地理位置返回数据");
+  $done({ body: fixed });
+} else {
+  $done({});
+}
