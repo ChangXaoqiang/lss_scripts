@@ -1,0 +1,13 @@
+#!name = otterlife_vip
+#!desc = OtterLife 永久 VIP 解锁
+#!author = ChangXiaoqiang
+#!date = 2025-10-23
+#!tag = 会员解锁
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/30/7c/48/307c48c7-6421-bd2b-e30a-a8d80daed35f/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/246x0w.png
+
+[Script]
+# OtterLife 永久 VIP 解锁
+^https?:\/\/otter-api\.codefuture\.top\/v\d+\/user\/current script-response-body https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js
+
+[Mitm]
+hostname = otter-api.codefuture.top
