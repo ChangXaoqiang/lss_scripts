@@ -1,0 +1,11 @@
+#!name = 知我记物
+#!desc = 知我记物会员解锁，需常开脚本。
+#!tag = 解锁会员
+#!category = 解锁会员
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/51/90/0d/51900d47-7b65-8e5e-409a-3a0a2c2ac163/AppIcon-0-0-1x_U007ephone-0-1-85-220.jpeg/246x0w.webp
+
+[MITM]
+hostname = api.revenuecat.com, api.rc-backup.com
+
+[Script]
+http-response ^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) requires-body=1,script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/Reheji.js,timeout=60,engine=auto
