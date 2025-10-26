@@ -1,0 +1,14 @@
+#!name = 🎃南瓜电影
+#!desc = 影院解锁，付费影视无解
+#!tag = 解锁会员
+#!category = 解锁会员
+#!homepage = https://t.me/GieGie777
+#!author = chxm1023
+#!date = 2025-10-26
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/88/a1/60/88a160f7-6fb2-1f28-436b-33f0c879ccd4/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/460x0w.png
+
+[MITM]
+hostname = open-secret-api-v2.vcinema.cn,47.93.95.61
+
+[Script]
+http-response ^https?:\/\/open-secret-api-v2.vcinema.cn\/v.+\/(user\/v2|get_overdue_device_menu_v2) requires-body=1,script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/nanguadianying.js,timeout=60,engine=auto
