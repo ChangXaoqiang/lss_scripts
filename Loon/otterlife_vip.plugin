@@ -1,0 +1,13 @@
+#!name=OtterLife Pro
+#!desc=解锁 OtterLife 永久会员。目前仅支持Loon，Script Hub转换后不会生效。
+#!author = ChangXiaoqiang
+#!icon=https://github.com/ChangXaoqiang/lss_scripts/blob/main/icon/otterlife.png?raw=true
+#!tag=会员解锁
+#!category=会员解锁
+#!date=2025-10-23
+
+[Script]
+http-response ^https?:\/\/otter-api\.codefuture\.top\/v\d+\/user\/current script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/otterlife.js, requires-body=true, timeout=10, tag=OtterLife解锁
+
+[MITM]
+hostname = otter-api.codefuture.top
