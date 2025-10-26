@@ -12,7 +12,7 @@
 *******************************
 [rewrite_local]
 # > 爱爱网🔞 会员、去广告
-^https?:\/\/aawapi-v3\.trh999\.com\/msg_demo\/v\/(video\/(mayAlsoLike|index|getVideoInfoNew)|vip\/(VIPVideos|suggestVideo)|index(\/(getAdvertiseList|getIndexCarouselList))?) url script-response-body https://raw.githubusercontent.com/WeiGiegie/666/main/aiaiwang.js
+^https?:\/\/aawapi-v3\.trh999\.com\/msg_demo\/v\/(video\/(mayAlsoLike|index|getVideoInfoNew)|vip\/(VIPVideos|suggestVideo)|index(\/(getAdvertiseList|getIndexCarouselList))?) url script-response-body https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/aiaiwang.js
 
 [mitm]
 hostname = aawapi-v3.trh999.com
