@@ -1,0 +1,21 @@
+#!name=咪咕视频VIP & 去广告
+#!desc=咪咕视频解锁VIP、去开屏广告
+#!tag = 去广告
+#!version=1.0
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8c/ba/fe/8cbafeac-3a3d-1091-d086-c1c1412651e8/AppIcon-0-0-1x_U007epad-0-1-0-0-sRGB-85-220.png/400x400ia-75.webp
+
+[Rule]
+# 开屏广告拦截
+DOMAIN-SUFFIX,miguvideo.com,REJECT
+URL-REGEX,^https://.*miguvideo\.com/request/sdk,REJECT-DROP
+URL-REGEX,^https://common-sc\.miguvideo\.com/task/v7/task-list/cmvideo/visitor,REJECT-DROP
+
+[Script]
+# 咪咕视频 VIP 解锁（响应处理）
+http-response ^https?:\/\/(play|dis).*miguvideo.com\/(play|dis)(url|play)\/.*$ script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/mgsp.js, requires-body=true, timeout=10
+
+# 咪咕视频 PlayURL 请求头处理
+http-request ^https?:\/\/play.miguvideo.com\/playurl\/v1\/play\/playurl\?2Kvivid=true?.*=true$ script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/mgspck.js, timeout=10
+
+[MITM]
+hostname = *.miguvideo.com
