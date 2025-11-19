@@ -1,0 +1,16 @@
+#!name=FlightTracker Pro
+#!desc=FlightTracker · RevenueCat 解锁脚本（仅供学习）
+#!author=XiaoMao
+#!version=1.0
+#!update=2024-12-26
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/af/d7/fe/afd7fe56-2b81-63fa-ad48-81b54cb19691/Placeholder.mill/400x400bb-75.webp
+
+[Script]
+# RevenueCat 解锁 - 响应 body
+http-response ^https:\/\/api\.revenuecat\.com\/v1\/(subscribers|receipts) script-path=https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/ftr.js, requires-body=true, timeout=10
+
+# RevenueCat 解锁 - 响应 header
+http-response ^https:\/\/api\.revenuecat\.com\/v1\/(subscribers|receipts) script-path=https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/ftr.js, timeout=10
+
+[MITM]
+hostname = api.revenuecat.com
