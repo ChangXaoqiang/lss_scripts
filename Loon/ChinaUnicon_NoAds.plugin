@@ -1,0 +1,57 @@
+#!name=中国联通净化[墨鱼版]
+#!desc=中国联通 APP 去广告（移植自 ddgksf2013 规则）
+#!author=ddgksf2013
+#!version=1.0.4
+#!update=2025-12-11
+
+[Rule]
+# Host 拦截
+DOMAIN-SUFFIX,ad.10010.com，REJECT
+
+# 首页瀑布流
+URL-REGEX,^https?:\/\/img\.client\.10010\.com\/homejingxuan12\/js\/(pubuliu|1homeView),REJECT
+
+# 广告推送
+URL-REGEX,^https?:\/\/m\.client\.10010\.com\/mobileserviceimportant\/customer\/querySmartServicekhd\.htm,REJECT
+
+# 新人专享
+URL-REGEX,^https?:\/\/m\.client\.10010\.com\/clientIndex\/api\/v1\/index\/queryIndexExclusiveOffers,REJECT
+
+
+[Rewrite]
+# 热搜词
+^https?:\/\/m\.client\.10010\.com\/search_service\/search\/searchScrollWord url script-response-body unicom_clean_search.js
+
+# 首页底部 ICON
+^https?:\/\/m\.client\.10010\.com\/clientIndex\/homefusion\/fuInter url script-response-body unicom_home_icon.js
+
+# 借钱
+^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/myWallet url script-response-body unicom_empty_data.js
+
+# 积分
+^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/myPoints url script-response-body unicom_empty_data.js
+
+# 彩铃
+^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/myColorfulRingtone url script-response-body unicom_empty_data.js
+
+# 横幅
+^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/newUserInfo url script-response-body unicom_empty_data.js
+
+# 本地图片推广
+^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/getDeviceInfo url script-response-body unicom_empty_data.js
+
+
+[Script]
+
+# 热搜词清空
+unicom_clean_search。js = type=http-response, pattern=^https?:\/\/m\.client\.10010\.com\/search_service\/search\/searchScrollWord, requires-body=true, timeout=10， script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom_clean_search.js
+
+# 首页 ICON 清理
+unicom_home_icon。js = type=http-response, pattern=^https?:\/\/m\.client\.10010\.com\/clientIndex\/homefusion\/fuInter, requires-body=true, timeout=10， script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom_home_icon.js
+
+# 通用 data={} 清空脚本
+unicom_empty_data。js = type=http-response, pattern=^https?:\/\/m\.client\.10010\.com\/clientMyPage\/v\d\/api\/(myWallet|myPoints|myColorfulRingtone|newUserInfo|getDeviceInfo), requires-body=true, timeout=10， script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/unicom_empty_data.js
+
+
+[MITM]
+hostname = m.client.10010.com， img.client.10010.com
