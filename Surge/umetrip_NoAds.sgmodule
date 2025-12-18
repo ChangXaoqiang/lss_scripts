@@ -1,26 +1,37 @@
-#!name=Umetrip (航旅纵横) Remove Ads - 2025-11 STRICT
-#!desc=Block splash ads even when CDN switches to Ali (ossgw.alicdn.com / mPaaS). Keep gateway traffic for core functions.
+#!name=Umetrip (航旅纵横) Remove Ads - 2025-11 STRICT (Surge Fixed)
+#!desc=Block splash ads even when CDN switches to Ali (ossgw.alicdn.com / mPaaS). Use reject-200 / map-local for better compatibility.
 #!author=ChatGPT
 #!date=2025-11
 
 [MITM]
 hostname = %APPEND% oss.umetrip.com, api.umetrip.com, ossgw.alicdn.com, *.aliyuncs.com
 
+# -----------------------------
+# Option A: URL Rewrite (return empty JSON with 200)
+# More compatible than reject / reject-dict for many apps.
+# -----------------------------
 [URL Rewrite]
-# ---- Primary (official OSS) ----
-^https?:\/\/oss\.umetrip\.com\/fs\/advert\/polite.* - reject-dict
-^https?:\/\/oss\.umetrip\.com\/fs\/advert\/.* - reject-dict
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/polite.* - reject-200
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/.* - reject-200
 
-# ---- Ali CDN mirror of the same bucket ----
-^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/polite.* - reject-dict
-^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/.* - reject-dict
+^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/polite.* - reject-200
+^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/.* - reject-200
 
-# ---- mPaaS (Ali) possible splash delivery paths (conservative) ----
-^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/advert\/.* - reject-dict
-^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/ads?\/.* - reject-dict
+^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/advert\/.* - reject-200
+^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/ads?\/.* - reject-200
 
-# ---- Legacy API ad endpoints ----
-^https?:\/\/api\.umetrip\.com\/api\/(ad|advert)\/.* - reject-dict
+^https?:\/\/api\.umetrip\.com\/api\/(ad|advert)\/.* - reject-200
 
-# ---- Safeguard: do NOT block app gateway (business APIs) ----
-# (No rule here; we simply avoid matching /gateway/)
+# -----------------------------
+# Option B: Map Local (return an empty JSON body)
+# If you find reject-200 still shows something, enable this section by keeping it.
+# Surge will respond with the local file content.
+# -----------------------------
+[Map Local]
+^https?:\/\/api\.umetrip\.com\/api\/(ad|advert)\/.* data="application/json;charset=utf-8,{\"code\":0,\"data\":null,\"message\":\"\",\"success\":true}"
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/.* data="application/json;charset=utf-8,{}"
+^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/.* data="application/json;charset=utf-8,{}"
+^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/(?:advert|ads?)\/.* data="application/json;charset=utf-8,{}"
+
+# Safeguard note:
+# We intentionally did NOT add any rule matching /gateway/ to avoid breaking core APIs.
