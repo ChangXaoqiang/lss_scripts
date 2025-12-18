@@ -1,0 +1,26 @@
+#!name=Umetrip (航旅纵横) Remove Ads - 2025-11 STRICT
+#!desc=Block splash ads even when CDN switches to Ali (ossgw.alicdn.com / mPaaS). Keep gateway traffic for core functions.
+#!author=ChatGPT
+#!date=2025-11
+
+[MITM]
+hostname = %APPEND% oss.umetrip.com, api.umetrip.com, ossgw.alicdn.com, *.aliyuncs.com
+
+[URL Rewrite]
+# ---- Primary (official OSS) ----
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/polite.* - reject-dict
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/.* - reject-dict
+
+# ---- Ali CDN mirror of the same bucket ----
+^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/polite.* - reject-dict
+^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/.* - reject-dict
+
+# ---- mPaaS (Ali) possible splash delivery paths (conservative) ----
+^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/advert\/.* - reject-dict
+^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/ads?\/.* - reject-dict
+
+# ---- Legacy API ad endpoints ----
+^https?:\/\/api\.umetrip\.com\/api\/(ad|advert)\/.* - reject-dict
+
+# ---- Safeguard: do NOT block app gateway (business APIs) ----
+# (No rule here; we simply avoid matching /gateway/)
