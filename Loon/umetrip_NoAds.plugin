@@ -1,0 +1,31 @@
+#!name=航旅纵横去广告
+#!desc=移除航旅纵横开屏广告及部分横幅。包含针对 Ali CDN (ossgw) 和 mPaaS (aliyuncs) 的严格匹配规则。
+#!author=ChatGPT
+#!homepage=https://github.com/
+#!icon=https://raw.githubusercontent.com/Loolin/Loon/master/Resource/Icon/Umetrip.png
+#!date=2025-11-01
+
+[Rule]
+# 如果需要基于域名的规则（通常 Rewrite 已经足够，此处作为补充兜底）
+DOMAIN, oss.umetrip.com, PROXY
+DOMAIN, api.umetrip.com, PROXY
+
+[Rewrite]
+# ---- Primary (official OSS) ----
+# 拦截官方 OSS 的广告目录
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/ reject
+
+# ---- Ali CDN mirror ----
+# 拦截阿里云 CDN 镜像中的广告路径
+^https?:\/\/ossgw\.alicdn\.com\/.*\/fs\/advert\/ reject
+
+# ---- mPaaS (Ali) ----
+# 拦截 mPaaS/Aliyun 路径下的广告关键词 (conservative)
+^https?:\/\/(?:[a-z0-9.-]+\.)?aliyuncs\.com\/.*/(advert|ads?)\/ reject
+
+# ---- Legacy API ----
+# 拦截旧版 API 广告接口 (使用 reject-200 返回空数据，防止报错)
+^https?:\/\/api\.umetrip\.com\/api\/(ad|advert)\/ reject-200
+
+[MitM]
+hostname = oss.umetrip.com, api.umetrip.com, ossgw.alicdn.com, *.aliyuncs.com
