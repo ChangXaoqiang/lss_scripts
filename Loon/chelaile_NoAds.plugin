@@ -1,0 +1,36 @@
+#!name = 车来了去广告
+#!desc = 去除车来了App内广告（精细控制版）
+#!openUrl = 
+#!author = 
+#!homepage = 
+#!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bus.png
+#!date = 2024-01-01
+#!version = 1.0.0
+
+[Rewrite]
+# 图片广告 - 返回空图片
+^https?:\/\/pic1\.chelaile\.net\.cn\/adv\/ reject-img
+
+# API广告请求 - 返回空JSON对象
+^https?:\/\/api\.chelaile\.net\.cn\/adpub\/ reject-dict
+
+# 城市广告 - 返回空JSON对象
+^https?:\/\/api\.chelaile\.net\.cn\/goocity\/advert\/ reject-dict
+
+# 追踪广告 - 返回空响应
+^https?:\/\/atrace\.chelaile\.net\.cn\/adpub\/ reject-200
+
+# 追踪广告图片 - 返回空图片
+^https?:\/\/atrace\.chelaile\.net\.cn\/exhibit\?&adv_image reject-img
+
+# Web广告API - 返回空JSON对象
+^https?:\/\/web\.chelaile\.net\.cn\/api\/adpub\/ad reject-dict
+
+# CDN广告资源 - 返回空响应
+^https?:\/\/cdn\.\w{3}\.chelaileapp\.cn\/adpub reject-200
+
+# CDN API广告 - 返回空JSON对象
+^https?:\/\/cdn\.\w{3}\.chelaileapp\.cn\/api\/adpub reject-dict
+
+[MITM]
+hostname = pic1.chelaile.net.cn, api.chelaile.net.cn, atrace.chelaile.net.cn, web.chelaile.net.cn, *.chelaileapp.cn
