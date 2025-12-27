@@ -1,0 +1,29 @@
+#!name= Nicegram Premium 𝕏
+#!desc= 对 Nicegram 学习探索 (v2.3.5)
+#!openUrl= https://apps.apple.com/app/id1608870673
+#!author=设置,简体中文语言[https://t.me/setlanguage/zh-hans-raw],繁体中文语言[https://t.me/setlanguage/zh-hant-raw],福壁纸（请勿随意操作）[https://t.me/bg/M4izoGYCIFa-AgAAz9mIZVvz3e0]
+#!icon= https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/08/31/9508311c-9e94-3038-b267-5d4c8e39cb21/AppIconLLC-0-0-1x_U007epad-0-1-0-85-220.png/460x0w.webp
+#!date = 2025-12-17 00:00:00
+
+[Argument]
+Demo= input, "", tag = 广告关闭说明（已废弃）, desc = 仅说明无实际用途
+Tip= input, "置顶推广 <== 解除", tag = 置顶推广说明(v2.3.5新增), desc = 仅说明无实际用途
+attPoints = input, "9999", tag = 积分数量（自信）,desc = 选填
+gems = input, "9999", tag = 宝石数量（自信）, desc = 选填
+
+[Rule]
+DOMAIN,static-cf.nicegram.app,REJECT
+DOMAIN,image.adsgram.me,REJECT
+DOMAIN,api.adsgram.ai,REJECT
+DOMAIN,relay.walletconnect.com,REJECT
+DOMAIN,verify.walletconnect.org,REJECT
+DOMAIN,firebaseremoteconfig.googleapis.com,REJECT
+DOMAIN,firebase-settings.crashlytics.com,REJECT
+DOMAIN,firebaseinstallations.googleapis.com,REJECT
+
+[Script]
+# Use refined regex and point to the js file in the repository
+http-response ^https?:\/\/nicegram\.cloud\/api\/v\d+\/(ai-assistant\/purchase-list|telegram\/auth|user\/info|unblock-feature|adsgram\/get-banner|att\/scroll-to-earn\/user-info|att\/scroll-to-earn\/config|att\/scroll-to-earn\/ads-list|airdrop\/task-list) script-path=https://raw.githubusercontent.com/ChangXaoqiang/lss_scripts/refs/heads/main/js/NicegramPremium.js, requires-body=true, timeout=60, tag=Nicegram Premium 𝕏, argument={ "attPoints": "{attPoints}", "gems": "{gems}" }
+
+[Mitm]
+hostname = nicegram.cloud
