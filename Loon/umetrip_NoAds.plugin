@@ -2,7 +2,7 @@
 #!desc=移除航旅纵横开屏广告及部分横幅。包含针对 Ali CDN (ossgw) 和 mPaaS (aliyuncs) 的严格匹配规则。
 #!author=ChatGPT
 #!homepage=https://github.com/
-#!icon=https://raw.githubusercontent.com/Loolin/Loon/master/Resource/Icon/Umetrip.png
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0a/b5/e1/0ab5e154-65cc-d6e7-78ad-23e82070d649/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/400x400ia-75.webp
 #!date=2025-11-01
 
 [Rule]
